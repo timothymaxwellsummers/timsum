@@ -1,6 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import Button from "/components/buttonComponent";
+import Pages from "/components/tableOfContents";
+import FooterComponent from "../components/footerComponent";
 
 export default function Home() {
   return (
@@ -12,29 +16,38 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>timsum.net</h1>
+        <h1 className={styles.title}>
+          <Link href="/">timsum.net</Link>
+        </h1>
 
-        <a href="https://nextjs.org/docs" className={styles.card}>
-          <h2>Documentation &rarr;</h2>
-        </a>
+        <p className={styles.center}>Hi I'm Timothy Summers welcome to my personal website. Enjoy 🤓</p>
 
-        <a href="https://nextjs.org/learn" className={styles.card}>
-          <h2>Learn &rarr;</h2>
-        </a>
+        <Pages />
 
-        <a
-          href="https://github.com/vercel/next.js/tree/canary/examples"
-          className={styles.card}
-        >
-          <h2>Examples &rarr;</h2>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          className={styles.card}
-        >
-          <h2>Deploy &rarr;</h2>
-        </a>
+        <div className={styles.description}>
+          <div className={styles.grid}>
+            <Image
+              priority
+              src="/profilePicture.png"
+              className={styles.image}
+              height={70}
+              width={70}
+            />
+            <p className={styles.descriptionHeading}>About me and what I do:</p>
+            <div className={styles.descriptionText}>
+              <p className={styles.textModifier}>
+                Hi so your interested in who I am? Thats nice... <br></br>So in
+                general people call me Tim. I'm currentl enrolled in my
+                bachelors degree at TUM in Munich for Information Sciences.
+                <br></br>I like to create digital content and do a lot of
+                sports.<br></br>Checkout this site to out more about myself or
+                contact me below.<br></br><br></br>
+                <i>Much luv Tim xx</i>
+              </p>
+            </div>
+          </div>
+        </div>
+        <FooterComponent />
       </main>
     </div>
   );
