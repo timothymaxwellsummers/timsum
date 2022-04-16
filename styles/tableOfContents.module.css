@@ -1,0 +1,30 @@
+.card {
+    margin: 0.5rem;
+    padding: 1rem;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: color 0.15s ease;
+    width: 100%;
+    max-width: 450px;
+    background-color: rgba(103, 103, 103, 0.3);
+    box-shadow: 0 5px rgba(103, 103, 103, 0.2);
+  }
+  
+  .card:hover,
+  .card:focus {
+    color: #b80000; 
+  }
+  
+  .card:active {
+    background-color: rgba(103, 103, 103, 0.2);
+    box-shadow: 0 3px rgba(103, 103, 103, 0.1);
+    transform: translateY(4px);
+  }
+  
+  .card p {
+    margin: 0;
+  }
+  
+  .card span {
+    float: right;
+  }

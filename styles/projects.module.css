@@ -1,0 +1,76 @@
+.wrapper {
+  display: grid;
+  margin: 1.5rem;
+  padding: 1rem;
+  text-decoration: none;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 700px;
+}
+
+.projectTitle {
+  grid-area: projectTitle;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.projectTitleText {
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.projectLogo {
+  border-radius: 10px;
+}
+
+.projectImage {
+  grid-area: projectImage;
+  object-fit: contain;
+}
+
+.projectText {
+  grid-area: projectText;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+}
+
+.toolButton {
+  background-color: #d3d3d3;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 0.7rem 0.2rem 0rem 0.2rem;
+  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 521px) {
+  .wrapper {
+    grid-template-areas:
+      "projectTitle projectTitle"
+      "projectImage projectText";
+    grid-template-columns: 30% 70%;
+  }
+
+  .projectText {
+    margin: 2rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .wrapper {
+    grid-template-areas:
+      "projectTitle"
+      "projectImage"
+      "projectText";
+  }
+
+  .projectText {
+    margin: 1rem;
+  }
+
+  .projectImage {
+      max-height: 150px;
+  }
+}

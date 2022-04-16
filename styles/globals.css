@@ -12,11 +12,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  cursor: url('/crosshairs.png'), pointer;
-}
-
-* {
-  box-sizing: border-box;
+  cursor: url('/cursor.png'), pointer;
 }
 
 p {
@@ -32,3 +28,8 @@ p {
 
 }
 
+@media screen and (min-width: 521px) {
+  * {
+    box-sizing: border-box;
+  }
+}

@@ -20,7 +20,7 @@ export default function Home() {
           <Link href="/">timsum.net</Link>
         </h1>
 
-        <p>Hi I'm Timothy Summers welcome to my personal website. Enjoy 🤓</p>
+        <p className={styles.center}>Hi I'm Timothy Summers welcome to my personal website. Enjoy 🤓</p>
 
         <Pages/>
 
