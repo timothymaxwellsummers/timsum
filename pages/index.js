@@ -20,7 +20,7 @@ export default function Home() {
           <Link href="/">timsum.net</Link>
         </h1>
 
-        <p className={styles.center}>Hi I'm Timothy Summers welcome to my personal website. Enjoy 🤓</p>
+        <p className={styles.center}>Hi I&apos;m Timothy Summers welcome to my personal website. Enjoy 🤓</p>
 
         <Pages />
 
@@ -37,7 +37,7 @@ export default function Home() {
             <div className={styles.descriptionText}>
               <p className={styles.textModifier}>
                 Hi so your interested in who I am? Thats nice... <br></br>So in
-                general people call me Tim. I'm currentl enrolled in my
+                general people call me Tim. I&apos;m currentl enrolled in my
                 bachelors degree at TUM in Munich for Information Sciences.
                 <br></br>I like to create digital content and do a lot of
                 sports.<br></br>Checkout this site to out more about myself or

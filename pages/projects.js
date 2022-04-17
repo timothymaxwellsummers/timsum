@@ -21,7 +21,7 @@ export default function Home() {
           <Link href="/">timsum.net</Link>
         </h1>
 
-        <p className={styles.center}>Hi I'm Timothy Summers welcome to my personal website. Enjoy 🤓</p>
+        <p className={styles.center}>Hi I&apos;m Timothy Summers welcome to my personal website. Enjoy 🤓</p>
 
         <Pages />
 
@@ -50,7 +50,7 @@ export default function Home() {
             Together with a group of students we developed the MailChampion App
             for our client Equinux. This was all part of a university project
             @TUM - the iPraktikum.<br></br>
-            The app's purpose was to bring email designing to the iphone. Which
+            The app&apos;s purpose was to bring email designing to the iphone. Which
             we achieved with a modern Instagram like UX.<br></br>Hit me up for
             more info ✌️ <br></br>
             <ToolButton
@@ -103,7 +103,7 @@ export default function Home() {
             really enjoyed. Archillect is an AI that posts visually stimulating
             content from various sources on Instagram.<br></br>I really liked
             their content and decided to create an app for myself that acesses
-            the archillect api to display it's current image in a widget on my
+            the archillect api to display it&apos;s current image in a widget on my
             iPhone. 🤓
             <br></br>
             <ToolButton
