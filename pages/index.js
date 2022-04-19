@@ -10,6 +10,9 @@ export default function Home() {
       <Head>
         <title>timsum.net</title>
         <meta name="timsum" content="Landing Page" />
+        <meta property="og:title" content="timsum.net" />
+        <meta property="og:description" content="Hi I&apos;m Timothy Summers. Checkout my personal website!" />
+        <meta property="og:image" content="/backgroundSmall.png" />
         <link rel="icon" href="/timMemoji.png" />
       </Head>
 
