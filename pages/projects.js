@@ -29,7 +29,7 @@ export default function Home() {
           <div className={cards.projectTitle}>
             <Image
               priority
-              src="/MailchampionLogo.png"
+              src="/mailchampionLogo.png"
               className={cards.projectLogo}
               height={50}
               width={50}
@@ -38,7 +38,7 @@ export default function Home() {
           </div>
           <Image
             priority
-            src="/MailchampionHome.png"
+            src="/mailchampionHome.png"
             className={cards.projectImage}
             width={1130}
             height={2000}

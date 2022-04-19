@@ -14,7 +14,7 @@ export default function Pages() {
         </h1>
 
         <p className={styles.center}>Hi I&apos;m Timothy Summers welcome to my personal website. Enjoy!</p>
-
+        <span className={styles.helper}></span>
         <Link href="/projects">
           <a className={styles.card}>
             <p>
@@ -30,6 +30,7 @@ export default function Pages() {
             </p>
           </a>
         </Link>
+        <span className={styles.helper}></span>
     </>
   );
 }

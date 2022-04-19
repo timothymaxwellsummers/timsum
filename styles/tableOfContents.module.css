@@ -1,52 +1,62 @@
 .card {
-    margin: 0.5rem;
-    padding: 1rem;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: color 0.15s ease;
-    width: 100%;
-    max-width: 450px;
-    border-style: solid;
-    border-color: #ffffff;
-    backdrop-filter: blur(10px);
-  }
-  
-  .card:hover,
-  .card:focus {
-    color: #32cd32; 
-    border-color: #32cd32;
-  }
-  
-  .card p {
-    margin: 0;
-  }
-  
-  .card span {
-    float: right;
-  }
+  margin: 0.5rem;
+  padding: 1rem;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: color 0.15s ease;
+  width: 100%;
+  border-style: solid;
+  border-color: #ffffff;
+  backdrop-filter: blur(10px);
+}
 
+.card:hover,
+.card:focus {
+  color: #32cd32;
+  border-color: #32cd32;
+}
+
+.card p {
+  margin: 0;
+}
+
+.card span {
+  float: right;
+}
+
+.title {
+  color: #ffffff;
+  font-family: "monument_extendedultrabold";
+  margin: 0;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+@media screen and (min-width: 521px) {
   .title {
-    color: #ffffff;
-    font-family: "monument_extendedultrabold";
-    margin: 0;
-    line-height: 1.15;
-    text-align: center;
+    font-size: 4rem;
   }
 
-  .center {
-    text-align: center;
+  .card {
+    max-width: 450px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .title {
+    font-size: 2.5rem;
   }
 
-  @media screen and (min-width: 521px) {
-  
-    .title {
-      font-size: 4rem;
-    }
+  .helper {
+    margin: 0.5rem;
   }
-  
-  @media screen and (max-width: 520px) {
-  
-    .title {
-      font-size: 2.5rem;
-    }
+
+
+  .card {
+    max-width: 250px;
   }
+}
