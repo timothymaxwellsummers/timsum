@@ -16,11 +16,6 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          <Link href="/">timsum.net</Link>
-        </h1>
-
-        <p className={styles.center}>Hi I&apos;m Timothy Summers welcome to my personal website. Enjoy 🤓</p>
 
         <Pages/>
 

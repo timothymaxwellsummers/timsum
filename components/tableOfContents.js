@@ -4,6 +4,17 @@ import Link from "next/link";
 export default function Pages() {
   return (
     <>
+      <h1 className={styles.title}>
+          <Link href="/">
+            <div>
+            timsum<span style={{ color: "#32cd32" }}>.</span>net
+            </div>
+            
+            </Link>
+        </h1>
+
+        <p className={styles.center}>Hi I&apos;m Timothy Summers welcome to my personal website. Enjoy!</p>
+
         <Link href="/projects">
           <a className={styles.card}>
             <p>

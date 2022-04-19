@@ -3,18 +3,17 @@ import Image from "next/image";
 
 export default function Button({ link, name, imagesrc }) {
   return (
-    <div>
-        <a href={link} className={styles.button}>
-        <Image
-              priority
-              src={imagesrc}
-              className={styles.image}
-              height={15}
-              width={15}
-            />
-        {name}
-        <span>&rarr;</span>
-        </a>
-    </div>
+    <a href={link} className={styles.button}>
+      <div>
+      <Image
+        priority
+        src={imagesrc}
+        className={styles.image}
+        height={15}
+        width={15}
+      />
+      {name}
+      </div>
+    </a>
   );
 }

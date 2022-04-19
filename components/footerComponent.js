@@ -9,12 +9,12 @@ export default function FooterComponent() {
       <div className={styles.buttonContainer}>
         <Button
           link={"https://www.instagram.com/tim.summers99/"}
-          name={" tim.summers99 "}
+          name={" Instagram "}
           imagesrc={"/instagramLogo.png"}
         />
         <Button
           link={"https://www.linkedin.com/in/timothymaxwellsummers/"}
-          name={" Timothy Summers "}
+          name={" LinkedIn "}
           imagesrc={"/linkedInLogo.png"}
         />
       </div>

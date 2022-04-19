@@ -1,21 +1,19 @@
 .button {
-    text-align: center;
+  text-align: center;
     border-radius: 10px;
     width: 100%;
     max-width: 150px;
     padding: 0.7rem;
     transition: color 0.15s ease;
-    background-color: rgba(103, 103, 103, 0.3);
-    box-shadow: 0 4px rgba(103, 103, 103, 0.2);
+    border-style: solid;
+    border-color: #ffffff;
+    backdrop-filter: blur(10px);
+    white-space: nowrap;
   }
   
   .button:hover,
   .button:focus {
-    color: #b80000; 
+    color: #32cd32; 
+    border-color: #32cd32;
   }
-  
-  .button:active {
-    background-color: rgba(103, 103, 103, 0.2);
-    box-shadow: 0 2px rgba(103, 103, 103, 0.1);
-    transform: translateY(3px);
-  }
+

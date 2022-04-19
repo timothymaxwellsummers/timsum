@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import cards from "../styles/projects.module.css";
-import Link from "next/link";
 import Pages from "/components/tableOfContents";
 import FooterComponent from "../components/footerComponent";
 import ToolButton from "../components/toolButton";
@@ -17,12 +16,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          <Link href="/">timsum.net</Link>
-        </h1>
-
-        <p className={styles.center}>Hi I&apos;m Timothy Summers welcome to my personal website. Enjoy 🤓</p>
-
+        
         <Pages />
 
         <div

@@ -6,19 +6,15 @@
     transition: color 0.15s ease;
     width: 100%;
     max-width: 450px;
-    background-color: rgba(103, 103, 103, 0.3);
-    box-shadow: 0 5px rgba(103, 103, 103, 0.2);
+    border-style: solid;
+    border-color: #ffffff;
+    backdrop-filter: blur(10px);
   }
   
   .card:hover,
   .card:focus {
-    color: #b80000; 
-  }
-  
-  .card:active {
-    background-color: rgba(103, 103, 103, 0.2);
-    box-shadow: 0 3px rgba(103, 103, 103, 0.1);
-    transform: translateY(4px);
+    color: #32cd32; 
+    border-color: #32cd32;
   }
   
   .card p {
@@ -27,4 +23,30 @@
   
   .card span {
     float: right;
+  }
+
+  .title {
+    color: #ffffff;
+    font-family: "monument_extendedultrabold";
+    margin: 0;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  @media screen and (min-width: 521px) {
+  
+    .title {
+      font-size: 4rem;
+    }
+  }
+  
+  @media screen and (max-width: 520px) {
+  
+    .title {
+      font-size: 2.5rem;
+    }
   }

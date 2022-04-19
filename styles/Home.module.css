@@ -3,21 +3,13 @@
 }
 
 .main {
-  color: #d3d3d3;
+  color: #ffffff;
   min-height: 100vh;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: top;
   align-items: center;
-}
-
-.title {
-  color: #b80000;
-  font-family: "homoarakhnregular";
-  margin: 0;
-  line-height: 1.15;
-  text-align: center;
 }
 
 .code {
@@ -34,11 +26,10 @@
   padding: 1rem;
   text-align: left;
   text-decoration: none;
-  border-radius: 15px;
   width: 100%;
   max-width: 700px;
-  background-color: rgba(103, 103, 103, 0.3);
   margin-bottom: 2.5rem;
+  backdrop-filter: blur(50px);
 }
 
 .grid {
@@ -78,13 +69,13 @@
 .findMe {
   text-align: center;
   margin-top: 0rem;
-  font-family: "homoarakhnregular";
+  font-family: "monument_extendedregular";
   line-height: 1.5rem;
 }
 
 .comment {
   text-align: center;
-  margin: 4rem;
+  margin: 3rem;
   font-size: 0.8rem;
   font-style: italic;
 }
@@ -95,11 +86,12 @@
   flex-wrap:wrap;
   justify-content: center;
   align-items: center;
-  gap: 2.2rem;
+  gap: 1rem;
 }
 
 .helper {
   margin:8rem; 
+  text-align: center;
 }
 
 @media (max-width: 600px) {
@@ -123,8 +115,9 @@
     padding: 4rem 0;
   }
 
-  .title {
-    font-size: 4rem;
+  .description{
+
+    border-radius: 20px;
   }
 }
 
@@ -142,7 +135,8 @@
     padding: 2rem 0;
   }
 
-  .title {
-    font-size: 2.5rem;
+  .description{
+    
+  border-radius: 15px;
   }
 }
