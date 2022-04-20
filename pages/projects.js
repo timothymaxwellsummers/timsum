@@ -13,13 +13,15 @@ export default function Home() {
         <title>timsum.net</title>
         <meta name="timsum" content="Projects Page" />
         <meta property="og:title" content="timsum.net" />
-        <meta property="og:description" content="Hi I&apos;m Timothy Summers. Checkout my personal website!" />
+        <meta
+          property="og:description"
+          content="Hi I'm Timothy Summers. Checkout my personal website!"
+        />
         <meta property="og:image" content="/backgroundSmall.jpg" />
         <link rel="icon" href="/timMemoji.png" />
       </Head>
 
       <main className={styles.main}>
-        
         <Pages />
 
         <div
@@ -37,16 +39,15 @@ export default function Home() {
             <div className={cards.projectTitleText}>MailChampion</div>
           </div>
 
-          <img src="/mailchampionHome.png" 
-            className={cards.projectImage}/> 
-        
+          <img src="/mailchampionHome.png" className={cards.projectImage} />
+
           <div className={cards.projectText}>
             Together with a group of students we developed the MailChampion App
             for our client Equinux. This was all part of a university project
             @TUM - the iPraktikum.<br></br>
-            The app&apos;s purpose was to bring email designing to the iphone. Which
-            we achieved with a modern Instagram like UX.<br></br>Hit me up for
-            more info ✌️ <br></br>
+            The app&apos;s purpose was to bring email designing to the iphone.
+            Which we achieved with a modern Instagram like UX.<br></br>Hit me up
+            for more info ✌️ <br></br>
             <ToolButton
               name={"Swift UI"}
               color={{ color: "rgba(103, 103, 183, 1)" }}
@@ -84,15 +85,14 @@ export default function Home() {
             />
             <div className={cards.projectTitleText}>Archillect App</div>
           </div>
-          <img src="/archillectHome.png" 
-            className={cards.projectImage}/> 
+          <img src="/archillectHome.png" className={cards.projectImage} />
           <div className={cards.projectText}>
             Some time back I discovered the archillect Instagram page which I
             really enjoyed. Archillect is an AI that posts visually stimulating
             content from various sources on Instagram.<br></br>I really liked
             their content and decided to create an app for myself that acesses
-            the archillect api to display it&apos;s current image in a widget on my
-            iPhone. 🤓
+            the archillect api to display it&apos;s current image in a widget on
+            my iPhone. 🤓
             <br></br>
             <ToolButton
               name={"Swift UI"}
@@ -123,8 +123,7 @@ export default function Home() {
             />
             <div className={cards.projectTitleText}>milou.io</div>
           </div>
-          <img src="/milouHome.jpg"
-            className={cards.projectImage}/> 
+          <img src="/milouHome.jpg" className={cards.projectImage} />
           <div className={cards.projectText}>
             milou.io was also a university project and part of the
             JavaScript-Seminar @TUM. This site should help investors to analyze
