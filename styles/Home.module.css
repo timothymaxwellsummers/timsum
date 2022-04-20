@@ -35,8 +35,8 @@
 .grid {
   display: grid;
   grid-template-areas:
-      "image descriptionHeading"
-      "descriptionText descriptionText";
+    "image descriptionHeading"
+    "descriptionText descriptionText";
   grid-template-columns: 20% 80%;
 }
 
@@ -63,7 +63,6 @@
 
 .textModifier {
   padding: 0 1rem 0rem 1rem;
-  line-height: 1.7rem;
 }
 
 .findMe {
@@ -83,14 +82,14 @@
 .buttonContainer {
   width: 100%;
   display: inline-flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
 
 .helper {
-  margin:8rem; 
+  margin: 8rem;
   text-align: center;
   width: 100%;
 }
@@ -103,41 +102,45 @@
 }
 
 @media screen and (min-width: 521px) {
-
   .buttonContainer {
-  flex-direction: row;
+    flex-direction: row;
   }
 
-  .descriptionHeading{
+  .descriptionHeading {
     font-size: 2rem;
   }
 
-  .main{
+  .main {
     padding: 4rem 0;
   }
 
-  .description{
-
+  .description {
     border-radius: 20px;
+  }
+
+  .textModifier {
+    line-height: 1.7rem;
   }
 }
 
 @media screen and (max-width: 520px) {
-
   .buttonContainer {
     flex-direction: column;
-    }
-
-  .descriptionHeading{  
-  font-size: 1.6rem;
   }
 
-  .main{
+  .descriptionHeading {
+    font-size: 1.6rem;
+  }
+
+  .main {
     padding: 2rem 0;
   }
 
-  .description{
-    
-  border-radius: 15px;
+  .description {
+    border-radius: 15px;
+  }
+
+  .textModifier {
+    line-height: 1.6rem;
   }
 }

@@ -36,13 +36,10 @@ export default function Home() {
             />
             <div className={cards.projectTitleText}>MailChampion</div>
           </div>
-          <Image
-            priority
-            src="/mailchampionHome.png"
-            className={cards.projectImage}
-            width={1130}
-            height={2000}
-          />
+
+          <img src="/mailchampionHome.png" 
+            className={cards.projectImage}/> 
+        
           <div className={cards.projectText}>
             Together with a group of students we developed the MailChampion App
             for our client Equinux. This was all part of a university project
@@ -87,14 +84,8 @@ export default function Home() {
             />
             <div className={cards.projectTitleText}>Archillect App</div>
           </div>
-          <Image
-            priority
-            layout="intrinsic"
-            src="/archillectHome.png"
-            className={cards.projectImage}
-            width={400}
-            height={710}
-          />
+          <img src="/archillectHome.png" 
+            className={cards.projectImage}/> 
           <div className={cards.projectText}>
             Some time back I discovered the archillect Instagram page which I
             really enjoyed. Archillect is an AI that posts visually stimulating
@@ -132,15 +123,8 @@ export default function Home() {
             />
             <div className={cards.projectTitleText}>milou.io</div>
           </div>
-          <Image
-            priority
-            layout="intrinsic"
-            src="/milouHome.jpg"
-            className={cards.projectImage}
-            style={{ borderRadius: "15px" }}
-            width={1130}
-            height={2000}
-          />
+          <img src="/milouHome.jpg"
+            className={cards.projectImage}/> 
           <div className={cards.projectText}>
             milou.io was also a university project and part of the
             JavaScript-Seminar @TUM. This site should help investors to analyze
