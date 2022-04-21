@@ -92,6 +92,7 @@
   margin: 8rem;
   text-align: center;
   width: 100%;
+  line-height: 1.6rem;
 }
 
 @media (max-width: 600px) {

@@ -29,13 +29,7 @@ export default function Home() {
           style={{ backgroundColor: "rgba(103, 103, 183, 0.3)" }}
         >
           <div className={cards.projectTitle}>
-            <Image
-              priority
-              src="/mailchampionLogo.png"
-              className={cards.projectLogo}
-              height={50}
-              width={50}
-            />
+            
             <div className={cards.projectTitleText}>MailChampion</div>
           </div>
 
