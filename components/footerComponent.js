@@ -20,7 +20,7 @@ export default function FooterComponent() {
       </div>
 
       <p className={styles.comment}>
-        *This site was created by myself using react with next.js :)
+        *This site was created by myself using react with next.js and vercel :)
       </p>
     </>
   );

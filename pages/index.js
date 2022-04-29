@@ -34,9 +34,9 @@ export default function Home() {
             <p className={styles.descriptionHeading}>About me and what I do:</p>
             <div className={styles.descriptionText}>
               <p className={styles.textModifier}>
-                Hi, so your interested in who I am? That's nice... <br></br>So I'm Timothy Summers but, in
+                Hi, so your interested in who I am? That&apos;s nice... <br></br>So I&apos;m Timothy Summers but, in
                 general, people call me Tim. I&apos;m currently enrolled in my
-                bachelor's degree at TUM in Munich for Information Sciences.
+                bachelor&apos;s degree at TUM in Munich for Information Sciences.
                 <br></br>I like to create digital content and do a lot of
                 sports.<br></br>Check out this site to find out more about myself or
                 contact me below.<br></br><br></br>

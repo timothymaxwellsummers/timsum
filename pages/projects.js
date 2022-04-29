@@ -163,7 +163,7 @@ export default function Home() {
           <div className={cards.projectText}>
             LOYA was a Seminar project. Here together with a friend we explored
             the idea of a digital loyalty card system for cafes and Take-outs. ☕️ 🥡
-            <br></br>This Figma project served as the MVP for this idea and was therefore presented in the seminar's final presentation!<br></br>
+            <br></br>This Figma project served as the MVP for this idea and was therefore presented in the seminar&apos;s final presentation!<br></br>
             <ToolButton
               name={"Figma"}
               color={{ color: "rgba(42, 185, 116, 1)" }}
