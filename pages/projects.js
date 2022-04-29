@@ -2,9 +2,11 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import cards from "../styles/projects.module.css";
-import Pages from "/components/tableOfContents";
+import Pages from "/components/navigation";
 import FooterComponent from "../components/footerComponent";
 import ToolButton from "../components/toolButton";
+import navStyles from "../styles/navigation.module.css";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -29,18 +31,17 @@ export default function Home() {
           style={{ backgroundColor: "rgba(103, 103, 183, 0.3)" }}
         >
           <div className={cards.projectTitle}>
-            
             <div className={cards.projectTitleText}>MailChampion</div>
           </div>
 
           <img src="/mailchampionHome.png" className={cards.projectImage} />
 
           <div className={cards.projectText}>
-            Together with a group of students we developed the MailChampion App
+            Together with a group of students, we developed the MailChampion App
             for our client Equinux. This was all part of a university project
             @TUM - the iPraktikum.<br></br>
-            The app&apos;s purpose was to bring email designing to the iphone.
-            Which we achieved with a modern Instagram like UX.<br></br>Hit me up
+            The app&apos;s purpose was to bring email designing to the iPhone.
+            Which we achieved with a modern Instagram-like UX.<br></br>Hit me up
             for more info ✌️ <br></br>
             <ToolButton
               name={"Swift UI"}
@@ -83,9 +84,9 @@ export default function Home() {
           <div className={cards.projectText}>
             Some time back I discovered the archillect Instagram page which I
             really enjoyed. Archillect is an AI that posts visually stimulating
-            content from various sources on Instagram.<br></br>I really liked
-            their content and decided to create an app for myself that acesses
-            the archillect api to display it&apos;s current image in a widget on
+            content from various sources on Instagram.<br></br>I loved
+            their posts and decided to create an app for myself that accesses
+            the archillect API to display its current image in a widget on
             my iPhone. 🤓
             <br></br>
             <ToolButton
@@ -143,6 +144,50 @@ export default function Home() {
             />
           </div>
         </div>
+
+        <div
+          className={cards.wrapper}
+          style={{ backgroundColor: "rgba(42, 185, 116, 0.3)" }}
+        >
+          <div className={cards.projectTitle}>
+            <Image
+              priority
+              src="/loyaLogo.png"
+              className={cards.projectLogo}
+              height={50}
+              width={50}
+            />
+            <div className={cards.projectTitleText}>LOYA</div>
+          </div>
+          <img src="/loyaHome.png" className={cards.projectImage} />
+          <div className={cards.projectText}>
+            LOYA was a Seminar project. Here together with a friend we explored
+            the idea of a digital loyalty card system for cafes and Take-outs. ☕️ 🥡
+            <br></br>This Figma project served as the MVP for this idea and was therefore presented in the seminar's final presentation!<br></br>
+            <ToolButton
+              name={"Figma"}
+              color={{ color: "rgba(42, 185, 116, 1)" }}
+            />
+          </div>
+        </div>
+
+        <span className={navStyles.helper}></span>
+        <Link href="/?tabOne=true">
+          <a className={navStyles.card}>
+            <p>
+              Home <span>&rarr;</span>
+            </p>
+          </a>
+        </Link>
+
+        <Link href="/coolStuff?tabThree=true">
+          <a className={navStyles.card}>
+            <p>
+              Stuff I like <span>&rarr;</span>
+            </p>
+          </a>
+        </Link>
+        <span className={navStyles.helper}></span>
 
         <FooterComponent />
       </main>

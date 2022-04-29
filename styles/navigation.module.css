@@ -28,12 +28,27 @@
   color: #ffffff;
   font-family: "monument_extendedultrabold";
   margin: 0;
+  margin-top: 1;
   line-height: 1.15;
   text-align: center;
 }
 
 .center {
   text-align: center;
+}
+
+.tabBar {
+  display: flex;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+  border-bottom: 0.5px solid;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 10px;
+}
+
+.tab{
+  color: #ffffff;
 }
 
 @media screen and (min-width: 521px) {
@@ -43,6 +58,11 @@
 
   .card {
     max-width: 450px;
+  }
+  .tabBar{
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -58,5 +78,9 @@
 
   .card {
     max-width: 250px;
+  }
+  .tabBar{
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
   }
 }

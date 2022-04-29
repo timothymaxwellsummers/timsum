@@ -67,7 +67,7 @@
 
 .findMe {
   text-align: center;
-  margin-top: 0rem;
+  margin-top: 1rem;
   font-family: "monument_extendedregular";
   line-height: 1.5rem;
 }
@@ -112,7 +112,7 @@
   }
 
   .main {
-    padding: 4rem 0;
+    padding: 1rem 0;
   }
 
   .description {
@@ -134,7 +134,7 @@
   }
 
   .main {
-    padding: 2rem 0;
+    padding: 0.5rem 0;
   }
 
   .description {

@@ -1,9 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import Link from "next/link";
-import Button from "/components/buttonComponent";
-import Pages from "/components/tableOfContents";
+import Pages from "/components/navigation";
 import FooterComponent from "../components/footerComponent";
 
 export default function Home() {
