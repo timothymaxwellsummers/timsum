@@ -34,7 +34,7 @@ export default function Home() {
             <p className={styles.descriptionHeading}>About me and what I do:</p>
             <div className={styles.descriptionText}>
               <p className={styles.textModifier}>
-                Hi, so your interested in who I am? That&apos;s nice... <br></br>So I&apos;m Timothy Summers but, in
+                Hi, your interested in who I am? That&apos;s nice... <br></br>So I&apos;m Timothy Summers but, in
                 general, people call me Tim. I&apos;m currently enrolled in my
                 bachelor&apos;s degree at TUM in Munich for Information Sciences.
                 <br></br>I like to create digital content and do a lot of

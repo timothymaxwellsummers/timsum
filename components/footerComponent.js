@@ -15,7 +15,12 @@ export default function FooterComponent() {
         <Button
           link={"https://www.linkedin.com/in/timothymaxwellsummers/"}
           name={" LinkedIn "}
-          imagesrc={"/linkedInLogo.png"}
+          imagesrc={"/LinkedInLogo2.png"}
+        />
+        <Button
+          link={"mailto:me@timsum.net"}
+          name={" me@timsum.net "}
+          imagesrc={"/mailLogo.png"}
         />
       </div>
 
