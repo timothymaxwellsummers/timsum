@@ -2,11 +2,18 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import cards from "../styles/projects.module.css";
-import Pages from "/components/navigation";
 import FooterComponent from "../components/footerComponent";
 import ToolButton from "../components/toolButton";
 import navStyles from "../styles/navigation.module.css";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const DynamicComponentWithNoSSR = dynamic(
+  () => import("/components/navigation"),
+  {
+    ssr: false,
+  }
+);
 
 export default function Home() {
   return (
@@ -24,7 +31,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Pages />
+        <DynamicComponentWithNoSSR />
 
         <div
           className={cards.wrapper}
@@ -84,10 +91,10 @@ export default function Home() {
           <div className={cards.projectText}>
             Some time back I discovered the archillect Instagram page which I
             really enjoyed. Archillect is an AI that posts visually stimulating
-            content from various sources on Instagram.<br></br>I loved
-            their posts and decided to create an app for myself that accesses
-            the archillect API to display its current image in a widget on
-            my iPhone. 🤓
+            content from various sources on Instagram.<br></br>I loved their
+            posts and decided to create an app for myself that accesses the
+            archillect API to display its current image in a widget on my
+            iPhone. 🤓
             <br></br>
             <ToolButton
               name={"Swift UI"}
@@ -162,8 +169,11 @@ export default function Home() {
           <img src="/loyaHome.png" className={cards.projectImage} />
           <div className={cards.projectText}>
             LOYA was a Seminar project. Here together with a friend we explored
-            the idea of a digital loyalty card system for cafes and Take-outs. ☕️ 🥡
-            <br></br>This Figma project served as the MVP for this idea and was therefore presented in the seminar&apos;s final presentation!<br></br>
+            the idea of a digital loyalty card system for cafes and Take-outs.
+            ☕️ 🥡
+            <br></br>This Figma project served as the MVP for this idea and was
+            therefore presented in the seminar&apos;s final presentation!
+            <br></br>
             <ToolButton
               name={"Figma"}
               color={{ color: "rgba(42, 152, 116, 1)" }}
