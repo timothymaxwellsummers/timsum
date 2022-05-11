@@ -40,7 +40,7 @@ export default function Home() {
                 <br></br>I like to create digital content and do a lot of
                 sports.<br></br>Check out this site to find out more about myself or
                 contact me below.<br></br><br></br>
-                <i>Much luv Tim xx</i>
+                <i>Have a nice day - Tim</i>
               </p>
             </div>
           </div>

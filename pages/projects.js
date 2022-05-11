@@ -147,7 +147,7 @@ export default function Home() {
 
         <div
           className={cards.wrapper}
-          style={{ backgroundColor: "rgba(42, 185, 116, 0.3)" }}
+          style={{ backgroundColor: "rgba(42, 152, 116, 0.3)" }}
         >
           <div className={cards.projectTitle}>
             <Image
@@ -166,7 +166,7 @@ export default function Home() {
             <br></br>This Figma project served as the MVP for this idea and was therefore presented in the seminar&apos;s final presentation!<br></br>
             <ToolButton
               name={"Figma"}
-              color={{ color: "rgba(42, 185, 116, 1)" }}
+              color={{ color: "rgba(42, 152, 116, 1)" }}
             />
           </div>
         </div>

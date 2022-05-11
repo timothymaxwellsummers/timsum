@@ -8,7 +8,7 @@ const Tab = ({ href, isSelected, title }) => (
         style={{
           padding: 10,
           margin: 5,
-          backgroundColor: isSelected ? "rgb(27 106 147)" : "transparent",
+          backgroundColor: isSelected ? "rgb(22 95 135)" : "transparent",
           color: isSelected ? "#32cd32" : "#ffffff",
           borderRadius: "5px"
         }}
