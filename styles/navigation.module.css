@@ -52,7 +52,7 @@
   background-color: rgb(27 106 147);
   width: 100vw;
   z-index: 1000;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px 5px;
 }
 
 @media screen and (min-width: 521px) {
