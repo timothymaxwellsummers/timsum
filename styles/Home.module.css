@@ -79,6 +79,11 @@
   font-style: italic;
 }
 
+.pdf {
+  width: 100vw;
+  height: 100vh;
+}
+
 .buttonContainer {
   width: 100%;
   display: inline-flex;
