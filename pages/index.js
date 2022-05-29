@@ -46,7 +46,7 @@ export default function Home() {
                 Hi, your interested in who I am? That&apos;s nice... <br></br>So
                 I&apos;m Timothy Summers but, in general, people call me Tim.
                 I&apos;m currently enrolled in my bachelor&apos;s degree at TUM
-                in Munich for Information Sciences.
+                in Munich for Informationsystems.
                 <br></br>I like to create digital content and do a lot of
                 sports.<br></br>Check out this site to find out more about
                 myself or contact me below.<br></br>
