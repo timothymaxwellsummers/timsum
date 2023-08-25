@@ -1,8 +1,10 @@
 'use client';
 
 import '@radix-ui/themes/styles.css';
-import { Theme } from '@radix-ui/themes';
+import { Container, Section, Theme } from '@radix-ui/themes';
 import { ThemeProvider } from 'next-themes';
+import './globals.css';
+import NavBar from "./components/Navbar";
 
 export default function RootLayout({
   children,
@@ -14,16 +16,19 @@ export default function RootLayout({
       <body>
         <ThemeProvider attribute='class'>
           <Theme
-            accentColor="crimson"
+            accentColor="green"
             grayColor="gray"
             panelBackground="translucent"
             scaling="100%"
             radius="full"
           >
+            <NavBar />
+            <Section>
             {children}
+            </Section>
           </Theme>
         </ThemeProvider>
-        </body>
+      </body>
     </html>
   )
 }

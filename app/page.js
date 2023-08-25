@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex, Text, Button, Heading, Container, AspectRatio, Section } from '@radix-ui/themes';
+import { Flex, Text, Button, Heading, Container, AspectRatio, Section, Card } from '@radix-ui/themes';
 import { LinkedInLogoIcon, FileTextIcon } from '@radix-ui/react-icons';
 import indexStyles from "../styles/index.module.css";
 
@@ -80,6 +80,14 @@ export default function Home() {
         </div>
         </Section>
         <Heading mb="2" size="7">my projects</Heading>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
       </Flex>
     </Container>
   );
