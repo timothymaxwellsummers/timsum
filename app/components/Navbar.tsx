@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import navStyles from "../../styles/nav.module.css";
 import { Avatar } from '@radix-ui/themes';
+import { useTheme } from 'next-themes'
 
 
 const navItems = [
@@ -28,6 +29,10 @@ const navItems = [
 ];
 
 export default function NavBar() {
+
+  const { resolvedTheme } = useTheme()
+
+
   let pathname = usePathname() || "/";
 
   if (pathname.includes("/writing/")) {
@@ -35,9 +40,9 @@ export default function NavBar() {
   }
 
   const [hoveredPath, setHoveredPath] = useState(pathname);
-  
+
   return (
-    <div className={navStyles.div1}>
+    <div className={resolvedTheme === 'dark' ? navStyles.div1Dark : navStyles.div1Light}>
       <nav className={navStyles.nav}>
         {navItems.map((item, index) => {
           const isActive = item.path === pathname;
@@ -45,7 +50,7 @@ export default function NavBar() {
           return (
             <Link
               key={item.path}
-              className={isActive ? navStyles.link1 : navStyles.link2}
+              className={isActive ? resolvedTheme === 'dark' ? navStyles.link1Dark : navStyles.link1Light : resolvedTheme === 'dark' ? navStyles.link2Dark : navStyles.link2Light}
               data-active={isActive}
               href={item.path}
               onMouseOver={() => setHoveredPath(item.path)}
@@ -54,7 +59,7 @@ export default function NavBar() {
               <span className={navStyles.span}>{item.name}</span>
               {item.path === hoveredPath && (
                 <motion.div
-                  className={navStyles.motion}
+                  className={resolvedTheme === 'dark' ? navStyles.motionDark : navStyles.motionLight}
                   layoutId="navbar"
                   aria-hidden="true"
                   style={{
@@ -73,10 +78,10 @@ export default function NavBar() {
           );
         })}
         <Avatar
-        className={navStyles.avatar}
-    src="/profilePicsquare.png"
-    fallback="S"
-  />
+          className={navStyles.avatar}
+          src="/profilePicsquare.png"
+          fallback="S"
+        />
       </nav>
     </div>
   );
