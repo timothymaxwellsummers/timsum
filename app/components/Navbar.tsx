@@ -15,8 +15,8 @@ const navItems = [
     name: "Home",
   },
   {
-    path: "/now",
-    name: "Now",
+    path: "/quotes",
+    name: "Quotes",
   },
   {
     path: "/guestbook",
@@ -32,6 +32,7 @@ export default function NavBar() {
 
   const { resolvedTheme } = useTheme()
 
+  console.log(resolvedTheme)
 
   let pathname = usePathname() || "/";
 

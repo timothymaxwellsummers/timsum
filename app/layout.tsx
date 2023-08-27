@@ -5,6 +5,7 @@ import { Container, Section, Theme } from '@radix-ui/themes';
 import { ThemeProvider } from 'next-themes';
 import './globals.css';
 import NavBar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export default function RootLayout({
   children,
@@ -26,6 +27,7 @@ export default function RootLayout({
             <Section>
             {children}
             </Section>
+            <Footer />
           </Theme>
         </ThemeProvider>
       </body>
