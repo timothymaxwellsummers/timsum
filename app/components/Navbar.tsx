@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import navStyles from "../../styles/nav.module.css";
@@ -29,18 +29,26 @@ const navItems = [
 ];
 
 export default function NavBar() {
+  let pathname = usePathname() || "/";
 
   const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  const [hoveredPath, setHoveredPath] = useState(pathname);
 
-  console.log(resolvedTheme)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
-  let pathname = usePathname() || "/";
+  if (!mounted) {
+    return null;
+  }
+
 
   if (pathname.includes("/writing/")) {
     pathname = "/writing";
   }
 
-  const [hoveredPath, setHoveredPath] = useState(pathname);
+
 
   return (
     <div className={resolvedTheme === 'dark' ? navStyles.div1Dark : navStyles.div1Light}>

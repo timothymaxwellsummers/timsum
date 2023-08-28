@@ -6,6 +6,7 @@ import { ThemeProvider } from 'next-themes';
 import './globals.css';
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Providers from "./providers";
 
 export default function RootLayout({
   children,
@@ -13,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider attribute='class'>
           <Theme

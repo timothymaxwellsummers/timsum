@@ -2,27 +2,34 @@
 
 import { Flex, Text, Switch, Container, Section } from '@radix-ui/themes';
 import footerStyles from "../../styles/footer.module.css";
-import { useTheme } from 'next-themes'
+import { useTheme } from 'next-themes';
+import React, { useState, useEffect } from "react";
 
-export default function Footer() {
 
+function Footer() {
+    const [mounted, setMounted] = useState(false)
     const { theme, setTheme } = useTheme()
 
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
-    function inActiveTheme(theme) {
-        return theme === 'light' ? 'dark' : 'light'
+    if (!mounted) {
+        return null;
     }
+
 
     return (
         <Container size="3">
             <Section size="1">
-            <Text size="2">
-                <label>
-                <span onClick={() => setTheme(inActiveTheme(theme))}> <Switch mr="2" variant="soft" defaultChecked/></span>
-                    Switch to {inActiveTheme(theme)} mode
-                </label>
-            </Text>
+                <select value={theme} onChange={e => setTheme(e.target.value)}>
+                    <option value="system">System</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
             </Section>
         </Container>
     );
 }
+
+export default Footer;
