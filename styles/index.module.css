@@ -6,3 +6,22 @@
 .center {
     margin: 0 auto;
 }
+
+.playerwrapper {
+    position: relative;
+    padding-top: 56.25%;
+    /* Player ratio: 100 / (1280 / 720) */
+    width: 80%;
+    height: 70%;
+}
+
+.wrapper {
+    width: 80%;
+    height: 70%;
+}
+
+.reactplayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

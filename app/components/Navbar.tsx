@@ -19,12 +19,12 @@ const navItems = [
     name: "Quotes",
   },
   {
-    path: "/guestbook",
-    name: "Guestbook",
+    path: "/music",
+    name: "Music",
   },
   {
-    path: "/writing",
-    name: "Writing",
+    path: "/guestbook",
+    name: "Guestbook",
   },
 ];
 
