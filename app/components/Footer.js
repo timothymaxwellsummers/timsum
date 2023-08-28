@@ -1,6 +1,7 @@
 'use client';
 
-import { Flex, Text, Switch, Container, Section } from '@radix-ui/themes';
+import { Flex, Button, Container, Section, Select } from '@radix-ui/themes';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import footerStyles from "../../styles/footer.module.css";
 import { useTheme } from 'next-themes';
 import React, { useState, useEffect } from "react";
@@ -22,11 +23,20 @@ function Footer() {
     return (
         <Container size="3">
             <Section size="1">
-                <select value={theme} onChange={e => setTheme(e.target.value)}>
-                    <option value="system">System</option>
-                    <option value="dark">Dark</option>
-                    <option value="light">Light</option>
-                </select>
+                <Flex justify="between">
+                <Button variant="outline" color="purple"><GitHubLogoIcon width="16" height="16" />Find this proj. on GitHub</Button>
+                <Select.Root value={theme} onValueChange={setTheme}>
+                    <Select.Trigger  variant="soft" />
+                    <Select.Content>
+                        <Select.Group>
+                            <Select.Label>Modes</Select.Label>
+                            <Select.Item value="system">System</Select.Item>
+                            <Select.Item value="dark">Dark</Select.Item>
+                            <Select.Item value="light">Light</Select.Item>
+                        </Select.Group>
+                    </Select.Content>
+                </Select.Root>
+                </Flex>
             </Section>
         </Container>
     );
