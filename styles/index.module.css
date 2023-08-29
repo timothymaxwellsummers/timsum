@@ -1,0 +1,41 @@
+.width {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.playerwrapper {
+    position: relative;
+    padding-top: 56.25%;
+    /* Player ratio: 100 / (1280 / 720) */
+    width: 80%;
+    height: 70%;
+}
+
+.wrapper {
+    width: 80%;
+    height: 70%;
+}
+
+.reactplayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .playerwrapper {
+        width: 100%;
+        height: 85%;
+    }
+    .wrapper {
+        width: 100%;
+        height: 85%;
+    }
+    .width {
+        max-width: 100%;
+    }
+}
