@@ -14,6 +14,12 @@
     border-color: #292929;
 }
 
+@media only screen and (max-width: 900px) {
+    .div1Dark {
+        width: 95%;
+    }
+}
+
 .div1Light {
     position: sticky;
     top: 1rem;

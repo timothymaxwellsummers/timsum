@@ -3,9 +3,13 @@
 import { Flex, Heading, Container, Text, Card, Badge, Tabs, AspectRatio, Blockquote } from '@radix-ui/themes';
 import ReactPlayer from "react-player"
 import indexStyles from "../../styles/index.module.css";
+import { useMediaQuery } from 'react-responsive'
 
 
 export default function Music() {
+    const isDesktop = useMediaQuery({
+        query: '(min-width: 600px)'
+      })
     return (
         <Container size="2">
             <Flex direction="column" gap="4">
@@ -32,7 +36,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://soundcloud.com/sodwee/only-you'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -48,7 +52,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://soundcloud.com/raptru/unreleased-christian-dior'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -64,7 +68,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://soundcloud.com/sirenenl/it-g-hot-in-mi-bumber-edit-pack-teaser'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -80,7 +84,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://soundcloud.com/overandoutuk/rwb-test-aim-free020'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -96,7 +100,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://soundcloud.com/djkorekaranojinjizaihai-music/flow-2000-3d1t'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -112,7 +116,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://soundcloud.com/9clacks/kodak-black-honest-freestyle'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -128,7 +132,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://soundcloud.com/livefromearth/alcatraz-amore-cok-1'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -144,7 +148,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://soundcloud.com/user-829532714/soulchef-write-this-down-x-dead-wrong-biggie-smalls'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -160,7 +164,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://soundcloud.com/kaymhmd8/frank-sinatra-and-nancy-sinatra-something-stupid'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -183,7 +187,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/jAaxVuz0uKk?si=NdWd8ZuBY4g1xuhY'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -199,7 +203,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/mh6vHoyBs58?si=eU9dwponpOW_6gQU'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -215,7 +219,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/KeiMLB6BS-o?si=MCXVTFVsRPIu3wBA'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -231,7 +235,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/r5qZoT6bbJo?si=8VHgkBGTCUTjbPQ2'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -247,7 +251,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/kOO31qFmi9A?si=Bv0EbO6sodmY-1mV'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -263,7 +267,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/DSd8V-kb6Ro?si=xer8mxuEtIOdqOW_'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -279,7 +283,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/VoJpiTh6vLA?si=oVJTBwuACb2vIOQE'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -295,7 +299,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/kRlhlCWplqk?si=WQr3AWmOGC2_SChN'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -311,7 +315,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/uFlPdwl5JHw?si=dCNc73H7jIhBwns1'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -327,7 +331,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/3bCoGC532p8?si=GFDaaVQpAlGCOssW'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -343,7 +347,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/WJEysanOT7w?si=B0q9YKNeWj9p7JiI'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -359,7 +363,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/1g9sneS2MF4?si=5ELLVbC5FoWNZWxI'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -375,7 +379,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/arUwVMtXm_U?si=YP9E7iJ2cWpbQtSI'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -391,7 +395,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/T00zEt1-3VA?si=QkTLdC3WctAiipyU'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -407,7 +411,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/qz2SeEzxMuE?si=mhrzmMplSt9o-u7D'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>
@@ -423,7 +427,7 @@ export default function Music() {
                                         <ReactPlayer
                                             className={indexStyles.reactplayer}
                                             url='https://www.youtube.com/embed/fHNx_3aCx6s?si=h9IpWB7ieNLcIy4M'
-                                            width='125%'
+                                            width={isDesktop ? "125%" : "100%"}
                                             height='100%'
                                         />
                                     </div>

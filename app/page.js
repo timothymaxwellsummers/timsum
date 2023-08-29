@@ -4,9 +4,13 @@ import { Flex, Text, Button, Heading, Container, AspectRatio, Section, Card, Bad
 import { GitHubLogoIcon, LayoutIcon } from '@radix-ui/react-icons';
 import { LinkedInLogoIcon, FileTextIcon } from '@radix-ui/react-icons';
 import indexStyles from "../styles/index.module.css";
+import { useMediaQuery } from 'react-responsive'
 
 
 export default function Home() {
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 600px)'
+  })
   return (
     <Container size="2">
       <Flex direction="column" gap="4">
@@ -82,13 +86,13 @@ export default function Home() {
         </Section>
         <Heading mb="2" size="7">my projects</Heading>
         <Card>
-          <Flex gap="5">
+          <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>
             <img
               src="/tcatimsum.png"
               alt="A house in a forest"
               style={{
                 objectFit: 'cover',
-                width: '40%',
+                width: (isDesktop ? "40%" : "80%"),
                 margin: '20px'
               }}
             />
@@ -107,13 +111,13 @@ export default function Home() {
           </Flex>
         </Card>
         <Card>
-          <Flex gap="5">
+          <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>
             <img
               src="/mactimsum.png"
               alt="A house in a forest"
               style={{
                 objectFit: 'cover',
-                width: '40%',
+                width: (isDesktop ? "40%" : "80%"),
                 margin: '20px'
               }}
             />
@@ -129,13 +133,13 @@ export default function Home() {
           </Flex>
         </Card>
         <Card>
-        <Flex gap="5">
+        <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>
             <img
               src="/archtimsum2.png"
               alt="A house in a forest"
               style={{
                 objectFit: 'cover',
-                width: '40%',
+                width: (isDesktop ? "40%" : "80%"),
                 margin: '20px'
               }}
             />
@@ -152,13 +156,13 @@ export default function Home() {
           </Flex>
         </Card>
         <Card>
-        <Flex gap="5">
+        <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>
             <img
               src="/miloufinal.png"
               alt="A house in a forest"
               style={{
                 objectFit: 'cover',
-                width: '40%',
+                width: (isDesktop ? "40%" : "80%"),
                 margin: '20px'
               }}
             />
