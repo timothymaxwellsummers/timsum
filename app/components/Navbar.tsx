@@ -15,12 +15,8 @@ const navItems = [
     name: "Home",
   },
   {
-    path: "/quotes",
-    name: "Quotes",
-  },
-  {
     path: "/music",
-    name: "Music",
+    name: "Cool stuff",
   },
   {
     path: "/guestbook",
