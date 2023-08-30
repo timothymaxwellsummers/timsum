@@ -3,11 +3,14 @@
 import { Flex, Heading, Container, Text, Card, Badge, Tabs, AspectRatio, Blockquote } from '@radix-ui/themes';
 import ReactPlayer from "react-player"
 import indexStyles from "../../styles/index.module.css";
-import { useMediaQuery } from 'react-responsive'
+import dynamic from "next/dynamic"
 
+const MediaQuery = dynamic(() => import("react-responsive"), {
+  ssr: false
+})
 
 export default function Music() {
-    const isDesktop = useMediaQuery({
+    const isDesktop = MediaQuery({
         query: '(min-width: 600px)'
       })
     return (

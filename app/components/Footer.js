@@ -24,7 +24,7 @@ function Footer() {
         <Container size="3">
             <Section size="1">
                 <Flex justify="between">
-                <Button variant="outline" color="purple"><GitHubLogoIcon width="16" height="16" />Find this proj. on GitHub</Button>
+                <Button variant="outline" color="purple" disabled><GitHubLogoIcon width="16" height="16" />Find this proj. on GitHub</Button>
                 <Select.Root value={theme} onValueChange={setTheme}>
                     <Select.Trigger  variant="soft" />
                     <Select.Content>
