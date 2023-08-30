@@ -47,7 +47,7 @@ export default function Guestbook() {
                 <Text>Say hi or just be nice haha. Feel free to write what ever u want just dont be mean!</Text>
                 <Section size="1">
                     {guestbookData && guestbookData.map((data) =>
-                        <Flex gap="3" pt="2"><Text color='gray'>{data.username}</Text><Text>{data.message}</Text></Flex>
+                        <Flex key={data.id} gap="3" pt="2"><Text color='gray'>{data.username}</Text><Text>{data.message}</Text></Flex>
                     )}
                 </Section>
                 <Flex justify="between" gap="4">
