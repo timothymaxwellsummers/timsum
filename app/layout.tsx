@@ -1,6 +1,6 @@
 import '@radix-ui/themes/styles.css';
 import { Container, Section, Theme } from '@radix-ui/themes';
-import { Providers } from './providers.jsx';
+import Providers from './providers.jsx';
 import './globals.css';
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
