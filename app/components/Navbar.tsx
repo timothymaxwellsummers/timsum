@@ -15,7 +15,7 @@ const navItems = [
     name: "Home",
   },
   {
-    path: "/music",
+    path: "/stuff",
     name: "Cool stuff",
   },
   {

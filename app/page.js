@@ -5,23 +5,36 @@ import { GitHubLogoIcon, LayoutIcon, FramerLogoIcon } from '@radix-ui/react-icon
 import { LinkedInLogoIcon, FileTextIcon } from '@radix-ui/react-icons';
 import indexStyles from "../styles/index.module.css";
 import Link from 'next/link';
-import { useMediaQuery } from 'react-responsive';
+import React, { useEffect, useState } from 'react';
 
 
 export default function Home() {
-  const isDesktop = useMediaQuery({
-    query: '(min-width: 600px)'
-  })
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 600px)');
+    const updateIsDesktop = () => {
+      setIsDesktop(mediaQuery.matches);
+    };
+
+    updateIsDesktop(); // Set initial value
+    mediaQuery.addListener(updateIsDesktop);
+
+    return () => {
+      mediaQuery.removeListener(updateIsDesktop);
+    };
+  }, []);
+
   return (
     <Container size="2">
       <Flex direction="column" gap="4">
         <Heading mb="2" size="7">hey, i&apos;m tim 👋</Heading>
         <Text>I like to built digital stuff. From websites and apps to 3D stuff. I finished an economics focused cs study program @TUM and am currently enrolled in a media focused cs master @LMU. At the same time I work at a small web dev agency in Munich. Trying to grow and learn more every day!</Text>
         <Flex gap="3" align="left">
-          <a href="https://www.linkedin.com/in/timothymaxwellsummers/" target="_blank">
+          <a href="https://www.linkedin.com/in/timothymaxwellsummers/" target="_blank" style={{ textDecoration: 'none', }}>
             <Button variant="soft"><LinkedInLogoIcon width="16" height="16" />LinkedIn</Button>
           </a>
-          <Link href='./cvTimsum.pdf' target="_blank">
+          <Link href='./cvTimsum.pdf' target="_blank" style={{ textDecoration: 'none', }}>
             <Button variant="soft"><FileTextIcon width="16" height="16" />My CV</Button>
           </Link>
         </Flex>
@@ -111,9 +124,9 @@ export default function Home() {
                 <Badge variant="surface" color='orange'>Postman</Badge>
               </Flex>
               <Flex>
-                <a href="https://github.com/TUM-Dev/Campus-iOS" target="_blank">
+                <a href="https://github.com/TUM-Dev/Campus-iOS" target="_blank" style={{ textDecoration: 'none', }}>
                   <Button variant="outline" color="purple" size="2"><GitHubLogoIcon width="12" height="12" />The TCA is Open Source</Button>
-                  </a>
+                </a>
               </Flex>
 
             </Flex>
@@ -138,9 +151,9 @@ export default function Home() {
                 <Badge variant="surface" color='gray'>Framer</Badge>
               </Flex>
               <Flex>
-                <a href="https://final-workshops-886277.framer.app/" target="_blank">
+                <a href="https://final-workshops-886277.framer.app/" target="_blank" >
                   <Button variant="outline" color="gold" size="2"><FramerLogoIcon width="12" height="12" />Checkout the site here</Button>
-                  </a>
+                </a>
               </Flex>
             </Flex>
           </Flex>
@@ -213,10 +226,10 @@ export default function Home() {
                 <Badge variant="surface" color='orange'>Postman</Badge>
               </Flex>
               <Flex>
-              <a href="https://archillect.com/" target="_blank">
-                <Button variant="outline" color="gray" size="2"><LayoutIcon width="12" height="12" />Checkout Archillect</Button>
+                <a href="https://archillect.com/" target="_blank" style={{ textDecoration: 'none', }}>
+                  <Button variant="outline" color="gray" size="2"><LayoutIcon width="12" height="12" />Checkout Archillect</Button>
                 </a>
-                </Flex>
+              </Flex>
             </Flex>
           </Flex>
         </Card>
@@ -240,10 +253,10 @@ export default function Home() {
                 <Badge variant="surface" color='gray'>VSCode</Badge>
               </Flex>
               <Flex>
-              <a href="https://github.com/ProjectMilou/frontend" target="_blank">
-                <Button variant="outline" color="purple" size="2"><GitHubLogoIcon width="12" height="12" />Find it on GitHub</Button>
+                <a href="https://github.com/ProjectMilou/frontend" target="_blank" style={{ textDecoration: 'none', }}>
+                  <Button variant="outline" color="purple" size="2"><GitHubLogoIcon width="12" height="12" />Find it on GitHub</Button>
                 </a>
-                </Flex>
+              </Flex>
             </Flex>
           </Flex>
         </Card>

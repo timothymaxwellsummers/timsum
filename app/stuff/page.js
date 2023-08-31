@@ -4,11 +4,26 @@ import { Flex, Heading, Container, Text, Card, Badge, Tabs, AspectRatio, Blockqu
 import ReactPlayer from "react-player"
 import indexStyles from "../../styles/index.module.css";
 import { useMediaQuery } from 'react-responsive';
+import React, { useEffect, useState } from 'react';
+
 
 export default function Music() {
-    const isDesktop = useMediaQuery({
-        query: '(min-width: 600px)'
-      })
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(min-width: 600px)');
+        const updateIsDesktop = () => {
+            setIsDesktop(mediaQuery.matches);
+        };
+
+        updateIsDesktop(); // Set initial value
+        mediaQuery.addListener(updateIsDesktop);
+
+        return () => {
+            mediaQuery.removeListener(updateIsDesktop);
+        };
+    }, []);
+
     return (
         <Container size="2">
             <Flex direction="column" gap="4">
@@ -176,7 +191,7 @@ export default function Music() {
                         <Heading mb="2" size="6" mt="5">some of my YouTube likes 📺</Heading>
                         <Text>Yeah right i like YouTube. A lot really. Check out these videos there are some funny gems and a couple of great conversations. Hope u find something u like.</Text>
                         <Flex direction="column" align="center" justify="center" gap="5" pt="7">
-                        <div className={indexStyles.wrapper}>
+                            <div className={indexStyles.wrapper}>
                                 <Card>
                                     <Flex pb="3" justify="between">
                                         <Text weight="medium" size="3">I can relate Mr. Incredible 😳</Text>
@@ -438,69 +453,69 @@ export default function Music() {
                     <Tabs.Content value="quotes">
                         <Heading mb="2" size="6" mt="5">quotes, i&apos;ve collected 💭</Heading>
                         <Flex direction="column" gap="4">
-                        <Text mb="3">A few of them take some time to digest. Take that time, its worth it :)</Text>
-                        <AspectRatio ratio={50 / 9}>
-                            <img
-                                src="/quotestitle.png"
-                                alt="A house in a forest"
-                                style={{
-                                    objectFit: 'cover',
-                                    width: '100%',
-                                    height: '100%',
-                                    borderRadius: 'var(--radius-2)',
-                                }}
-                            />
-                        </AspectRatio>
+                            <Text mb="3">A few of them take some time to digest. Take that time, its worth it :)</Text>
+                            <AspectRatio ratio={50 / 9}>
+                                <img
+                                    src="/quotestitle.png"
+                                    alt="A house in a forest"
+                                    style={{
+                                        objectFit: 'cover',
+                                        width: '100%',
+                                        height: '100%',
+                                        borderRadius: 'var(--radius-2)',
+                                    }}
+                                />
+                            </AspectRatio>
 
 
-                        <Blockquote color="gray" size="5" highContrast="true" mt="3">
-                            A comparison is a thief of joy
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            Hate is poison that kills the vessel it sits in
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            Happiness = Reality - Expectations
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            Things only hurt when theres some truth to it
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            Find people that don’t need work to be around
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            The goal is not to run a marathon the goal is to become a runner
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            Good artists copy, great artists steal!
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            Mann wusste den sinn des Lebens als mann nichts wusste
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            Denken hilft, mehr bringt wenig
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            Under promise and over deliver
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            Know something about everything and everything about something
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            If i always did what i was qualified to do i&apos;d be pushing a broom some where
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            The definition of a gentleman is to make people in an uncomfortable position comfortable
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            Ur the average of the 5 people u most associate with
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            Anxiety is a symptom of self disunity
-                        </Blockquote>
-                        <Blockquote color="gray" size="5" highContrast="true">
-                            The last thing you want to do on a relaxing day is stare in to your phone
-                        </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true" mt="3">
+                                A comparison is a thief of joy
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                Hate is poison that kills the vessel it sits in
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                Happiness = Reality - Expectations
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                Things only hurt when theres some truth to it
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                Find people that don’t need work to be around
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                The goal is not to run a marathon the goal is to become a runner
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                Good artists copy, great artists steal!
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                Mann wusste den sinn des Lebens als mann nichts wusste
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                Denken hilft, mehr bringt wenig
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                Under promise and over deliver
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                Know something about everything and everything about something
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                If i always did what i was qualified to do i&apos;d be pushing a broom some where
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                The definition of a gentleman is to make people in an uncomfortable position comfortable
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                Ur the average of the 5 people u most associate with
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                Anxiety is a symptom of self disunity
+                            </Blockquote>
+                            <Blockquote color="gray" size="5" highContrast="true">
+                                The last thing you want to do on a relaxing day is stare in to your phone
+                            </Blockquote>
                         </Flex>
                     </Tabs.Content>
                 </Tabs.Root>
