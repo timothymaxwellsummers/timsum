@@ -25,7 +25,7 @@ export default function RootLayout({
             radius="full"
           >
             <NavBar />
-            <Section>
+            <Section size="2">
             {children}
             </Section>
             <Footer />

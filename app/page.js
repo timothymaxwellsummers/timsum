@@ -5,21 +5,17 @@ import { GitHubLogoIcon, LayoutIcon, FramerLogoIcon } from '@radix-ui/react-icon
 import { LinkedInLogoIcon, FileTextIcon } from '@radix-ui/react-icons';
 import indexStyles from "../styles/index.module.css";
 import Link from 'next/link';
-import dynamic from "next/dynamic"
-
-const MediaQuery = dynamic(() => import("react-responsive"), {
-  ssr: false
-})
+import { useMediaQuery } from 'react-responsive';
 
 
 export default function Home() {
-  const isDesktop = MediaQuery({
+  const isDesktop = useMediaQuery({
     query: '(min-width: 600px)'
   })
   return (
     <Container size="2">
       <Flex direction="column" gap="4">
-        <Heading mb="2" size="7">hey, i&aposm tim 👋</Heading>
+        <Heading mb="2" size="7">hey, i&apos;m tim 👋</Heading>
         <Text>I like to built digital stuff. From websites and apps to 3D stuff. I finished an economics focused cs study program @TUM and am currently enrolled in a media focused cs master @LMU. At the same time I work at a small web dev agency in Munich. Trying to grow and learn more every day!</Text>
         <Flex gap="3" align="left">
           <a href="https://www.linkedin.com/in/timothymaxwellsummers/" target="_blank">
@@ -184,7 +180,7 @@ export default function Home() {
             />
             <Flex direction="column" gap="3" justify="center" pr="5">
               <Heading size="6">timsum.net</Heading>
-              <Text>The site ur on right now. It&aposs an ongoing project and will be extended/redesigned in future. So stay tuned and check in every once in a while! <Text color="gray">(Image is a past version)</Text></Text>
+              <Text>The site ur on right now. It&apos;s an ongoing project and will be extended/redesigned in future. So stay tuned and check in every once in a while! <Text color="gray">(Image is a past version)</Text></Text>
               <Flex gap="2">
                 <Badge variant="surface" color='gray'>Next.js</Badge>
                 <Badge variant="surface" color='blue'>React</Badge>
@@ -210,7 +206,7 @@ export default function Home() {
             />
             <Flex direction="column" gap="3" justify="center" pr="5">
               <Heading size="6">Archillect App</Heading>
-              <Text>Fun little project of mine. Really like archillect (check it out below). It&aposs a bot collecting cool images from the web. Built an app to display these images in a widget on the iphone.</Text>
+              <Text>Fun little project of mine. Really like archillect (check it out below). It&apos;s a bot collecting cool images from the web. Built an app to display these images in a widget on the iphone.</Text>
               <Flex gap="2">
                 <Badge variant="surface" color='indigo'>XCode</Badge>
                 <Badge variant="surface" color='tomato'>Swift/UI</Badge>

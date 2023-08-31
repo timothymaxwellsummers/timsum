@@ -3,14 +3,10 @@
 import { Flex, Heading, Container, Text, Card, Badge, Tabs, AspectRatio, Blockquote } from '@radix-ui/themes';
 import ReactPlayer from "react-player"
 import indexStyles from "../../styles/index.module.css";
-import dynamic from "next/dynamic"
-
-const MediaQuery = dynamic(() => import("react-responsive"), {
-  ssr: false
-})
+import { useMediaQuery } from 'react-responsive';
 
 export default function Music() {
-    const isDesktop = MediaQuery({
+    const isDesktop = useMediaQuery({
         query: '(min-width: 600px)'
       })
     return (
@@ -27,7 +23,7 @@ export default function Music() {
 
                     <Tabs.Content value="music">
                         <Heading mb="2" size="6" mt="5">my tunes 📻</Heading>
-                        <Text>I listen to a lot of music. Across the board really but favourite genres are r&b, soul, electronic, hiphop and in general bangers. So here&aposs a small selection of soundcloud stuff i like.</Text>
+                        <Text>I listen to a lot of music. Across the board really but favourite genres are r&b, soul, electronic, hiphop and in general bangers. So here&apos;s a small selection of soundcloud stuff i like.</Text>
                         <Flex direction="column" align="center" justify="center" gap="5" pt="7">
                             <div className={indexStyles.wrapper}>
                                 <Card>
@@ -440,7 +436,7 @@ export default function Music() {
                     </Tabs.Content>
 
                     <Tabs.Content value="quotes">
-                        <Heading mb="2" size="6" mt="5">quotes, i&aposve collected 💭</Heading>
+                        <Heading mb="2" size="6" mt="5">quotes, i&apos;ve collected 💭</Heading>
                         <Flex direction="column" gap="4">
                         <Text mb="3">A few of them take some time to digest. Take that time, its worth it :)</Text>
                         <AspectRatio ratio={50 / 9}>
@@ -491,7 +487,7 @@ export default function Music() {
                             Know something about everything and everything about something
                         </Blockquote>
                         <Blockquote color="gray" size="5" highContrast="true">
-                            If i always did what i was qualified to do i&aposd be pushing a broom some where
+                            If i always did what i was qualified to do i&apos;d be pushing a broom some where
                         </Blockquote>
                         <Blockquote color="gray" size="5" highContrast="true">
                             The definition of a gentleman is to make people in an uncomfortable position comfortable
