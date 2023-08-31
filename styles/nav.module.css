@@ -14,15 +14,6 @@
     border-color: #292929;
 }
 
-@media only screen and (max-width: 900px) {
-    .div1Dark {
-        width: 95%;
-    }
-    .div1Light {
-        width: 95%;
-    }
-}
-
 .div1Light {
     position: sticky;
     top: 1rem;
@@ -37,6 +28,15 @@
     background-color: rgba(255, 255, 255, 0.95);
     border-style: solid;
     border-color: #c4c4c4;
+}
+
+@media only screen and (max-width: 900px) {
+    .div1Dark {
+        width: 95%;
+    }
+    .div1Light {
+        width: 95%;
+    }
 }
 
 .nav {
