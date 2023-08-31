@@ -151,7 +151,7 @@ export default function Home() {
                 <Badge variant="surface" color='gray'>Framer</Badge>
               </Flex>
               <Flex>
-                <a href="https://final-workshops-886277.framer.app/" target="_blank" >
+                <a href="https://final-workshops-886277.framer.app/" target="_blank" style={{ textDecoration: 'none', }}>
                   <Button variant="outline" color="gold" size="2"><FramerLogoIcon width="12" height="12" />Checkout the site here</Button>
                 </a>
               </Flex>

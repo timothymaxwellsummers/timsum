@@ -1,12 +1,16 @@
-'use client';
-
 import '@radix-ui/themes/styles.css';
 import { Container, Section, Theme } from '@radix-ui/themes';
-import { ThemeProvider } from 'next-themes';
+import { Providers } from './providers.jsx';
 import './globals.css';
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Providers from "./providers";
+import type { Metadata } from 'next';
+
+
+export const metadata: Metadata = {
+  title: 'tim\'s site',
+  description: 'Checkout some of my projects, stuff i like or leave a message \<3',
+}
 
 export default function RootLayout({
   children,
@@ -16,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute='class'>
+        <Providers>
           <Theme
             accentColor="green"
             grayColor="gray"
@@ -26,11 +30,11 @@ export default function RootLayout({
           >
             <NavBar />
             <Section size="2">
-            {children}
+              {children}
             </Section>
             <Footer />
           </Theme>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )
