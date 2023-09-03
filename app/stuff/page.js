@@ -3,7 +3,6 @@
 import { Flex, Heading, Container, Text, Card, Badge, Tabs, AspectRatio, Blockquote } from '@radix-ui/themes';
 import ReactPlayer from "react-player"
 import indexStyles from "../../styles/index.module.css";
-import { useMediaQuery } from 'react-responsive';
 import React, { useEffect, useState } from 'react';
 
 

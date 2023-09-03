@@ -6,6 +6,7 @@ import { LinkedInLogoIcon, FileTextIcon } from '@radix-ui/react-icons';
 import indexStyles from "../styles/index.module.css";
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import Gallery from './components/GalleryComponent';
 
 
 export default function Home() {
@@ -38,70 +39,7 @@ export default function Home() {
             <Button variant="soft"><FileTextIcon width="16" height="16" />My CV</Button>
           </Link>
         </Flex>
-        <Section size="1">
-          <div>
-            <div className={indexStyles.width}>
-              <Flex gap="3">
-                <Container>
-                  <Flex direction="column" gap="3" align="center">
-                    <AspectRatio ratio={1 / 1}>
-                      <img
-                        src="/ball.png"
-                        alt="A house in a forest"
-                        style={{
-                          objectFit: 'cover',
-                          width: '100%',
-                          height: '100%',
-                          borderRadius: 'var(--radius-2)',
-                        }}
-                      />
-                    </AspectRatio>
-                    <AspectRatio ratio={1 / 1}>
-                      <img
-                        src="/laptop.png"
-                        alt="A house in a forest"
-                        style={{
-                          objectFit: 'cover',
-                          width: '100%',
-                          height: '100%',
-                          borderRadius: 'var(--radius-2)',
-                        }}
-                      />
-                    </AspectRatio>
-                  </Flex>
-                </Container>
-                <Container>
-                  <AspectRatio ratio={1 / 2.07}>
-                    <img
-                      src="/link.png"
-                      alt="A house in a forest"
-                      style={{
-                        objectFit: 'cover',
-                        width: '100%',
-                        height: '100%',
-                        borderRadius: 'var(--radius-2)',
-                      }}
-                    />
-                  </AspectRatio>
-                </Container>
-                <Container>
-                  <AspectRatio ratio={1 / 2.07}>
-                    <img
-                      src="/port.png"
-                      alt="A house in a forest"
-                      style={{
-                        objectFit: 'cover',
-                        width: '100%',
-                        height: '100%',
-                        borderRadius: 'var(--radius-2)',
-                      }}
-                    />
-                  </AspectRatio>
-                </Container>
-              </Flex>
-            </div>
-          </div>
-        </Section>
+        <Gallery/>
         <Heading mb="2" size="7">my projects</Heading>
         <Card>
           <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>

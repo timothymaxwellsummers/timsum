@@ -2,7 +2,6 @@
 
 import { Flex, Button, Container, Section, Select } from '@radix-ui/themes';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
-import footerStyles from "../../styles/footer.module.css";
 import { useTheme } from 'next-themes';
 import React, { useState, useEffect } from "react";
 
