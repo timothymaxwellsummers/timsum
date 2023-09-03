@@ -3,7 +3,7 @@ import indexStyles from "../../styles/index.module.css";
 import Image from 'next/image';
 
 
-export default function Home() {
+export default function Gallery() {
     return (
         <Section size="1">
             <div>
