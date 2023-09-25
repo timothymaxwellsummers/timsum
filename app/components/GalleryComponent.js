@@ -1,6 +1,7 @@
 import { Flex, Container, AspectRatio, Section } from '@radix-ui/themes';
 import indexStyles from "../../styles/index.module.css";
 import Image from 'next/image';
+import port from '../../public/port.png'
 
 
 export default function Gallery() {
@@ -51,7 +52,7 @@ export default function Gallery() {
                         <Container>
                             <AspectRatio ratio={1 / 2.07}>
                                 <Image
-                                    src="/port.png"
+                                    src={port}
                                     alt="Airport vibe"
                                     fill
                                     style={{

@@ -23,7 +23,9 @@ function Footer() {
         <Container size="3">
             <Section size="1">
                 <Flex justify="between">
-                <Button variant="outline" color="purple" disabled><GitHubLogoIcon width="16" height="16" />Find this proj. on GitHub</Button>
+                <a href="https://github.com/timothymaxwellsummers/timsum" target="_blank" style={{ textDecoration: 'none', }}>
+                <Button variant="outline" color="purple"><GitHubLogoIcon width="16" height="16" />Find this proj. on GitHub</Button>
+                </a>
                 <Select.Root value={theme} onValueChange={setTheme}>
                     <Select.Trigger  variant="soft" />
                     <Select.Content>
