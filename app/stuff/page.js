@@ -313,7 +313,7 @@ export default function Stuff() {
                             <Text mb="3">A few of them take some time to digest. Take that time, its worth it :)</Text>
                             <AspectRatio ratio={50 / 9}>
                                 <img
-                                    src="/quotestitle.png"
+                                    src="/quotestitle.webp"
                                     alt="A house in a forest"
                                     style={{
                                         objectFit: 'cover',
@@ -321,6 +321,7 @@ export default function Stuff() {
                                         height: '100%',
                                         borderRadius: 'var(--radius-2)',
                                     }}
+                                    loading="lazy"
                                 />
                             </AspectRatio>
 

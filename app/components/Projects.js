@@ -31,13 +31,14 @@ export default function Projects() {
         <Card>
           <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>
             <img
-              src="/tcatimsum.png"
+              src="/tcatimsum.webp"
               alt="A house in a forest"
               style={{
                 objectFit: 'cover',
                 width: (isDesktop ? "40%" : "80%"),
                 margin: '20px'
               }}
+              loading="lazy"
             />
             <Flex direction="column" gap="3" justify="center" pr="5">
               <Heading size="6">TUM Campus App</Heading>
@@ -60,13 +61,14 @@ export default function Projects() {
         <Card>
           <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>
             <img
-              src="/cctimsum.png"
+              src="/cctimsum.webp"
               alt="A house in a forest"
               style={{
                 objectFit: 'cover',
                 width: (isDesktop ? "40%" : "80%"),
                 margin: '20px'
               }}
+              loading="lazy"
             />
             <Flex direction="column" gap="3" justify="center" pr="5">
               <Heading size="6">consultsummers.com</Heading>
@@ -86,13 +88,14 @@ export default function Projects() {
         <Card>
           <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>
             <img
-              src="/mactimsum.png"
+              src="/mactimsum.webp"
               alt="A house in a forest"
               style={{
                 objectFit: 'cover',
                 width: (isDesktop ? "40%" : "80%"),
                 margin: '20px'
               }}
+              loading="lazy"
             />
             <Flex direction="column" gap="3" justify="center" pr="5">
               <Heading size="6">Mailchampion</Heading>
@@ -108,13 +111,14 @@ export default function Projects() {
         <Card>
           <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>
             <img
-              src="/timsumnet.png"
+              src="/timsumnet.webp"
               alt="A house in a forest"
               style={{
                 objectFit: 'cover',
                 width: (isDesktop ? "40%" : "80%"),
                 margin: '20px'
               }}
+              loading="lazy"
             />
             <Flex direction="column" gap="3" justify="center" pr="5">
               <Heading size="6">timsum.net</Heading>
@@ -134,13 +138,14 @@ export default function Projects() {
         <Card>
           <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>
             <img
-              src="/archtimsum2.png"
+              src="/archtimsum2.webp"
               alt="A house in a forest"
               style={{
                 objectFit: 'cover',
                 width: (isDesktop ? "40%" : "80%"),
                 margin: '20px'
               }}
+              loading="lazy"
             />
             <Flex direction="column" gap="3" justify="center" pr="5">
               <Heading size="6">Archillect App</Heading>
@@ -161,13 +166,14 @@ export default function Projects() {
         <Card>
           <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>
             <img
-              src="/miloufinal.png"
+              src="/miloufinal.webp"
               alt="A house in a forest"
               style={{
                 objectFit: 'cover',
                 width: (isDesktop ? "40%" : "80%"),
                 margin: '20px'
               }}
+              loading="lazy"
             />
             <Flex direction="column" gap="3" justify="center" pr="5">
               <Heading size="6">Project Milou</Heading>

@@ -80,7 +80,7 @@ export default function NavBar() {
           })}
           <Avatar
             className={navStyles.avatar}
-            src="/profilePicsquare.png"
+            src="/profilePicsquare.webp"
             fallback="S"
           />
         </nav>
