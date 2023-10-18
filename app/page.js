@@ -1,5 +1,5 @@
 import { Flex, Text, Button, Heading, Container} from '@radix-ui/themes';
-import { LinkedInLogoIcon, FileTextIcon } from '@radix-ui/react-icons';
+import { LinkedInLogoIcon, FileTextIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import Gallery from './components/GalleryComponent';
 import Projects from './components/Projects';
@@ -14,6 +14,9 @@ export default function Home() {
         <Flex gap="3" align="left">
           <a href="https://www.linkedin.com/in/timothymaxwellsummers/" target="_blank" style={{ textDecoration: 'none', }}>
             <Button variant="soft"><LinkedInLogoIcon width="16" height="16" />LinkedIn</Button>
+          </a>
+          <a href="https://github.com/timothymaxwellsummers" target="_blank" style={{ textDecoration: 'none', }}>
+            <Button variant="soft"><GitHubLogoIcon width="16" height="16" />GitHub</Button>
           </a>
           <Link href='./cvTimsum.pdf' target="_blank" style={{ textDecoration: 'none', }}>
             <Button variant="soft"><FileTextIcon width="16" height="16" />My CV</Button>

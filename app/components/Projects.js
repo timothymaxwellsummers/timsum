@@ -1,7 +1,7 @@
 'use client';
 
 import { Flex, Heading, Card, Text, Badge, Button} from '@radix-ui/themes';
-import { GitHubLogoIcon, LayoutIcon, FramerLogoIcon } from '@radix-ui/react-icons';
+import { GitHubLogoIcon, LayoutIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
 import React, { useEffect, useState } from 'react';
 import projectStyles from "../../styles/projects.module.css";
 import Image from 'next/image';
@@ -54,14 +54,42 @@ export default function Projects() {
                   <Button variant="outline" color="purple" size="2"><GitHubLogoIcon width="12" height="12" />The TCA is Open Source</Button>
                 </a>
               </Flex>
-
             </Flex>
           </Flex>
         </Card>
         <Card>
           <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>
             <img
-              src="/cctimsum.webp"
+              src="/innfield.webp"
+              alt="A house in a forest"
+              style={{
+                objectFit: 'cover',
+                width: (isDesktop ? "40%" : "80%"),
+                margin: '20px'
+              }}
+              loading="lazy"
+            />
+            <Flex direction="column" gap="3" justify="center" pr="5">
+              <Heading size="6">innfieldadvisory.com</Heading>
+              <Text>Built this one pager for InnfieldAdvisory. Used material&apos;s Joy UI and react-slick which was fun.</Text>
+              <Flex gap="2">
+                <Badge variant="surface" color='indigo'>Joy UI</Badge>
+                <Badge variant="surface" color='gray'>React-Slick</Badge>
+                <Badge variant="surface" color='gray'>next.js</Badge>
+                <Badge variant="surface" color='gray'>vercel</Badge>
+              </Flex>
+              <Flex>
+                <a href="https://www.innfieldadvisory.com/" target="_blank" style={{ textDecoration: 'none', }}>
+                  <Button variant="outline" color="gold" size="2"><ExternalLinkIcon width="12" height="12" />Checkout the site here</Button>
+                </a>
+              </Flex>
+            </Flex>
+          </Flex>
+        </Card>
+        <Card>
+          <Flex gap="5" direction={isDesktop ? "row" : "column"} align={isDesktop ? undefined : "center"}>
+            <img
+              src="/ccnew.webp"
               alt="A house in a forest"
               style={{
                 objectFit: 'cover',
@@ -72,14 +100,14 @@ export default function Projects() {
             />
             <Flex direction="column" gap="3" justify="center" pr="5">
               <Heading size="6">consultsummers.com</Heading>
-              <Text>Built this onepager for my dads consultancy. Good opportunity to give figma x framer a try. Kinda cool but expensive and resposiveness is pain.</Text>
+              <Text>Built this onepager for my dads consultancy. Good opportunity to give figma x framer a try. Kinda cool but expensive and resposiveness is pain. So rebuilt it in next.js.</Text>
               <Flex gap="2">
                 <Badge variant="surface" color='crimson'>Figma</Badge>
                 <Badge variant="surface" color='gray'>Framer</Badge>
               </Flex>
               <Flex>
-                <a href="https://final-workshops-886277.framer.app/" target="_blank" style={{ textDecoration: 'none', }}>
-                  <Button variant="outline" color="gold" size="2"><FramerLogoIcon width="12" height="12" />Checkout the site here</Button>
+                <a href="https://www.consultsummers.com/" target="_blank" style={{ textDecoration: 'none', }}>
+                  <Button variant="outline" color="gold" size="2"><ExternalLinkIcon width="12" height="12" />Checkout the site here</Button>
                 </a>
               </Flex>
             </Flex>
