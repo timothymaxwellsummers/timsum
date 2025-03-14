@@ -51,22 +51,20 @@ export default function Guestbook() {
                     )}
                 </Section>
                 <Flex justify="between" gap="4">
-                    <TextField.Root style={{ width: '100%' }}>
+                    <TextField.Root 
+                        placeholder="Choose a name..."
+                        color={emptyNameAlert ? "red" : "gray"}
+                        variant={emptyNameAlert ? "soft" : "surface"}
+                        style={{ width: '100%' }}
+                        onChange={(e) => setname(e.target.value)}
+                        onFocus={() => setemptyNamealert(false)}
+                        ref={nameInput}
+                    >
                         <TextField.Slot>
                             <PersonIcon height="16" width="16" />
                         </TextField.Slot>
-                        <TextField.Input
-                            placeholder="Choose a name..."
-                            ref={nameInput}
-                            onChange={(x) => {
-                                setname(x.target.value)
-                            }}
-                            onFocus={() => setemptyNamealert(false)}
-                            type="text"
-                            color={emptyNameAlert ? "red" : "gray"}
-                            variant={emptyNameAlert ? "soft" : "surface"}
-                        />
                     </TextField.Root>
+                    
                     <Button
                         variant="soft"
                         onClick={() => {
@@ -89,7 +87,6 @@ export default function Guestbook() {
                         setmessage(x.target.value)
                     }}
                     onFocus={() => setemptyMessagealert(false)}
-                    type="text"
                     color={emptyMessageAlert ? "red" : "gray"}
                     variant={emptyMessageAlert ? "soft" : "surface"}
                 ></TextArea>
