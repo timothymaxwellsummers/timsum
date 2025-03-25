@@ -21,7 +21,9 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "target": "ES2017",
+    "module": "esnext"
   },
   "include": [
     "next-env.d.ts",
