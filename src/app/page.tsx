@@ -7,7 +7,7 @@ import {
   Box,
   Button,
 } from "@radix-ui/themes";
-import { ArrowDown, FileText, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import NextLink from "next/link";
 
 export default function Home() {
