@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Providers from "@/app/providers";
 import "./globals.css";
-import { Theme } from "@radix-ui/themes";
 
 export const metadata: Metadata = {
   title: "tim's site",
@@ -16,15 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Theme
-          accentColor="green"
-          grayColor="gray"
-          panelBackground="translucent"
-          scaling="100%"
-          radius="full"
-        >
-          <Providers>{children}</Providers>
-        </Theme>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

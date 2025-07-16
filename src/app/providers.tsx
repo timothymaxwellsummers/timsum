@@ -16,8 +16,15 @@ export default function Providers({ children }: ProvidersProps) {
       enableSystem
       disableTransitionOnChange
     >
-      <Theme>
-        {children}
+      <Theme
+        accentColor="green"
+        grayColor="gray"
+        panelBackground="translucent"
+        scaling="100%"
+        radius="full"
+      >
+        <div className="noise-overlay"></div>
+          {children}
       </Theme>
     </ThemeProvider>
   );
