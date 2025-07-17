@@ -1,5 +1,4 @@
 import {
-  Container,
   Flex,
   Heading,
   Text,
@@ -9,11 +8,12 @@ import {
 } from "@radix-ui/themes";
 import { ArrowDown } from "lucide-react";
 import NextLink from "next/link";
+import Image from "next/image";
+import profileImage from "../../public/timothyIcon.webp";
 
 export default function Home() {
   return (
-    <Container size="1">
-      <Flex direction="column" minHeight="100vh">
+      <Flex direction="column" minHeight="100vh" width="100%">
         <Flex
           direction="column"
           align="center"
@@ -22,13 +22,22 @@ export default function Home() {
           p="4"
         >
           <Box>
-            <Heading as="h1" size="8" mb="4">
+            <Image
+              src={profileImage}
+              alt="Timothy Summers"
+              width={85}
+              height={85}
+              priority={true}
+              loading="eager"
+              className="mb-5"
+            />
+            <Heading as="h1" size="8" mb="1">
               Timothy Summers
             </Heading>
-            <Text as="p" size="4" color="gray" mb="4">
+            <Text as="p" size="4" color="gray" mb="5">
               I like developing tools people love.
             </Text>
-            <Flex gap="2" mb="4" wrap="wrap">
+            <Flex gap="2" mb="5" wrap="wrap">
               <Button variant="soft">LinkedIn</Button>
               <Button variant="soft">Email</Button>
               <Button variant="soft">CV</Button>
@@ -59,6 +68,5 @@ export default function Home() {
           </Button>
         </Flex>
       </Flex>
-    </Container>
   );
 }
