@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "@radix-ui/themes/styles.css";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --noise-opacity: 0.8;
 }
