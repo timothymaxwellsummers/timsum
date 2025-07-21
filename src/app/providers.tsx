@@ -24,7 +24,9 @@ export default function Providers({ children }: ProvidersProps) {
         radius="full"
       >
         <div className="noise-overlay"></div>
+        <div className="content-wrapper">
           {children}
+        </div>
       </Theme>
     </ThemeProvider>
   );
