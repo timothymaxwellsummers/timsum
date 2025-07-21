@@ -20,7 +20,7 @@ export default function Providers({ children }: ProvidersProps) {
         accentColor="green"
         grayColor="gray"
         panelBackground="translucent"
-        scaling="100%"
+        scaling="110%"
         radius="full"
       >
         <div className="noise-overlay"></div>
