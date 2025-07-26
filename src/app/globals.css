@@ -32,6 +32,39 @@ body {
 @keyframes noiseX { to { background-position-x: -90px; } }
 @keyframes noiseY { to { background-position-y:  70px; } }
 
+@keyframes text-focus-in {
+  0% {
+    filter: blur(5px);
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up-and-fade-in {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 @media(prefers-reduced-motion:reduce){.noise-overlay{animation:none;}}
 
 @media (prefers-color-scheme: dark) {
