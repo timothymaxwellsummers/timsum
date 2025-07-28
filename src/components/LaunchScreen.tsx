@@ -45,16 +45,36 @@ export function LaunchScreen() {
           >
             <Flex gap="2" mb="5" wrap="wrap">
               <div className="transition-transform duration-200 ease-in-out hover:scale-107 hover:rotate-2">
-                <Button variant="soft">LinkedIn</Button>
+                <a
+                  href="https://www.linkedin.com/in/timothymaxwellsummers/"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button variant="soft">LinkedIn</Button>
+                </a>
               </div>
               <div className="transition-transform duration-200 ease-in-out hover:scale-107 hover:rotate-2">
-                <Button variant="soft">Email</Button>
+                <a
+                  href="mailto:me@timsum.net"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button variant="soft">Email</Button>
+                </a>
               </div>
               <div className="transition-transform duration-200 ease-in-out hover:scale-107 hover:rotate-2">
-                <Button variant="soft">CV</Button>
+                <Link href="./cvTimsum.pdf" target="_blank" style={{ textDecoration: 'none', }}>
+                  <Button variant="soft">CV</Button>
+                </Link>
               </div>
               <div className="transition-transform duration-200 ease-in-out hover:scale-107 hover:rotate-2">
-                <Button variant="soft">GitHub</Button>
+                <a
+                  href="https://github.com/timothymaxwellsummers"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                > 
+                  <Button variant="soft">GitHub</Button>
+                </a>
               </div>
             </Flex>
           </div>
@@ -87,7 +107,7 @@ export function LaunchScreen() {
         style={{ opacity: 0 }}
       >
         <Flex justify="center" p="8">
-          <Link href="#education">
+          <Link href="#experience">
             <Button variant="classic" size="3">
               Find out more <ArrowDown size={20} className="-m-1.5" />
             </Button>
