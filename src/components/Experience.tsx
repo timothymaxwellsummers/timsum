@@ -1,7 +1,7 @@
-import { Flex, Heading, Text, Box, Card, Badge } from "@radix-ui/themes";
+import { Flex, Heading, Text, Box, Card } from "@radix-ui/themes";
 import Image from "next/image";
 import pwcIcon from "../../public/pwc.svg";
-import mwIcon from "../../public/maibornwolff.png";
+import mwIcon from "../../public/maibornwolff.svg";
 import lmuDevsIcon from "../../public/lmuDevs.svg";
 import wowIcon from "../../public/wow.png";
 
@@ -14,7 +14,7 @@ export function Experience() {
       justify="start"
       py="8"
     >
-        <Heading as="h2" size="7" mb="5" align="center">
+        <Heading as="h2" size="7" mb="5" mt="8" align="center">
           Experience
         </Heading>
         <Flex direction="column" gap="3">

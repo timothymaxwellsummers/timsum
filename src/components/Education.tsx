@@ -12,10 +12,10 @@ export function Education() {
       justify="start"
       py="8"
     >
-        <Heading as="h2" size="7" mb="5" align="center">
+        <Heading as="h2" size="7" mb="5" mt="8" align="center">
           Education
         </Heading>
-        <Flex direction="column" gap="3">
+        <Flex direction="column" gap="3" mb="8">
           <Box>
             <Flex gap="2" align="center" justify="between" mb="1" mx="2">
               <Text color="gray" size="3" weight="bold">
