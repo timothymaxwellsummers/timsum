@@ -90,7 +90,7 @@ export function LaunchScreen() {
                   </Text>
                 </NextLink>
               </Link>
-              <Link asChild underline="always" color="gray">
+              <Link asChild underline="always" color="gray" size="4">
                 <NextLink href="/gallery">
                   <Text size="3" weight="medium">
                     Gallery

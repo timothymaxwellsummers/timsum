@@ -1,0 +1,61 @@
+"use client";
+
+import { ArrowRight, Dices } from "lucide-react";
+import quotes from "../../public/quotes.json";
+import { Button, Flex, Quote, Text } from "@radix-ui/themes";
+import { useEffect, useState } from "react";
+import TextType from "./TextType";
+
+export function QuotePreview() {
+  const [index, setIndex] = useState<number>(-1);
+
+  useEffect(() => {
+    setIndex(Math.floor(Math.random() * quotes.quotes.length));
+  }, []);
+
+  const current = index >= 0 ? quotes.quotes[index] : null;
+
+  const handleNewQuote = () => {
+    if (quotes.quotes.length === 0) return;
+    let next = Math.floor(Math.random() * quotes.quotes.length);
+    if (quotes.quotes.length > 1 && next === index) {
+      next = (next + 1) % quotes.quotes.length;
+    }
+    setIndex(next);
+  };
+  return (
+    <Flex
+      direction="column"
+      align="center"
+      justify="center"
+      style={{ height: "60svh", marginTop: "5svh", marginBottom: "5svh" }}
+    >
+      <Text size="2" color="gray" weight="medium" mb="4">
+        Random Quote &middot; {current ? current.author : ""}
+      </Text>
+      <Flex direction="column" gap="1">
+        <Text size="6">
+          <Quote>
+            <TextType
+              key={index}
+              text={[current ? current.quote : ""]}
+              typingSpeed={35}
+              pauseDuration={300}
+              showCursor={true}
+              cursorCharacter="|"
+              loop={false}
+            />
+          </Quote>
+        </Text>
+      </Flex>
+      <Flex direction="row" gap="2" mt="4">
+        <Button variant="soft" onClick={handleNewQuote} size="1">
+          New Quote <Dices size={16} />
+        </Button>
+        <Button variant="outline" color="gray" onClick={handleNewQuote} size="1">
+          All Quotes <ArrowRight size={16} />
+        </Button>
+      </Flex>
+    </Flex>
+  );
+}
