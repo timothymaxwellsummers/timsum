@@ -1,10 +1,11 @@
 "use client";
 
 import { ArrowRight, Dices } from "lucide-react";
-import quotes from "../../public/quotes.json";
+import quotes from "../../../public/quotes.json";
 import { Button, Flex, Quote, Text } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import TextType from "./TextType";
+import NextLink from "next/link";
 
 export function QuotePreview() {
   const [index, setIndex] = useState<number>(-1);
@@ -31,7 +32,7 @@ export function QuotePreview() {
       style={{ height: "60svh", marginTop: "5svh", marginBottom: "5svh" }}
     >
       <Text size="2" color="gray" weight="medium" mb="4">
-        Random Quote &middot; {current ? current.author : ""}
+        {current ? current.author : ""}
       </Text>
       <Flex direction="column" gap="1">
         <Text size="6">
@@ -52,8 +53,10 @@ export function QuotePreview() {
         <Button variant="soft" onClick={handleNewQuote} size="1">
           New Quote <Dices size={16} />
         </Button>
-        <Button variant="outline" color="gray" onClick={handleNewQuote} size="1">
-          All Quotes <ArrowRight size={16} />
+        <Button asChild variant="outline" color="gray" size="1">
+          <NextLink href="/quotes">
+            All Quotes <ArrowRight size={16} />
+          </NextLink>
         </Button>
       </Flex>
     </Flex>

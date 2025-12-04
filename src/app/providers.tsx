@@ -17,7 +17,7 @@ export default function Providers({ children }: ProvidersProps) {
       disableTransitionOnChange
     >
       <Theme
-        accentColor="green"
+        accentColor="teal"
         grayColor="gray"
         panelBackground="translucent"
         scaling="110%"

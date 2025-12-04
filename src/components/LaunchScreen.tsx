@@ -109,7 +109,7 @@ export function LaunchScreen() {
         <Flex justify="center" p="8">
           <Link href="#experience">
             <Button variant="classic" size="3">
-              Find out more <ArrowDown size={20} className="-m-1.5" />
+              Explore <ArrowDown size={20} className="-m-1.5" />
             </Button>
           </Link>
         </Flex>

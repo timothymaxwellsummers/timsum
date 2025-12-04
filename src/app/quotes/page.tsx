@@ -1,0 +1,37 @@
+import { Container, Flex, Heading, Text, Link, Blockquote, Quote } from "@radix-ui/themes";
+import NextLink from "next/link";
+import quotes from "../../../public/quotes.json";
+
+export default function Quotes() {
+  return (
+    <Container>
+      <Flex direction="column" align="center" justify="center" style={{ minHeight: "calc(100vh - 120px)", paddingTop: "2rem", paddingBottom: "2rem" }}>
+        <Heading as="h1" size="8" mb="4">
+          Quotes
+        </Heading>
+        <Text size="4" color="gray" mb="3">
+          A collection of quotes I have gathered over the years.
+        </Text>
+        <Flex direction="column" gap="5" mt="6" mx="2" maxWidth="600px" mb="6">
+          {quotes.quotes.map((q, i) => (
+            <Blockquote key={i}>
+              <Text size="4">
+                <Quote>
+                  {q.quote}
+                </Quote>
+              </Text>
+              <Text as="p" size="2" color="gray" mt="2">
+                {q.author}
+              </Text>
+            </Blockquote>
+          ))}
+        </Flex>
+        <Link asChild mb="6" mt="4">
+          <NextLink href="/">
+            <Text size="3" weight="medium">← Back to Home</Text>
+          </NextLink>
+        </Link>
+      </Flex>
+    </Container>
+  );
+} 
