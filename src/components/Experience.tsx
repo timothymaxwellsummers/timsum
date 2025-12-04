@@ -8,7 +8,6 @@ import wowIcon from "../../public/wow.png";
 export function Experience() {
   return (
     <Flex
-      id="experience"
       direction="column"
       align="center"
       justify="start"

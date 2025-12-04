@@ -107,7 +107,7 @@ export function LaunchScreen() {
         style={{ opacity: 0 }}
       >
         <Flex justify="center" p="8">
-          <Link href="#experience">
+          <Link href="#quote-preview">
             <Button variant="classic" size="3">
               Explore <ArrowDown size={20} className="-m-1.5" />
             </Button>

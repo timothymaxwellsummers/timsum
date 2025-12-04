@@ -26,17 +26,18 @@ export function QuotePreview() {
   };
   return (
     <Flex
+      id="quote-preview"
       direction="column"
       align="center"
       justify="center"
-      style={{ height: "60svh", marginTop: "5svh", marginBottom: "5svh" }}
+      style={{ height: "60svh", marginTop: "5svh", marginBottom: "5svh", marginLeft: "2", marginRight: "2" }}
     >
-      <Text size="2" color="gray" weight="medium" mb="4">
-        {current ? current.author : ""}
-      </Text>
-      <Flex direction="column" gap="1">
+      <Flex direction="column" style={{ maxWidth: 750, width: "100%", textAlign: "center" }}>
+        <Text size="2" color="gray" weight="medium" mb="4">
+          {current ? current.author : ""}
+        </Text>
         <Text size="6">
-          <Quote>
+          <Quote wrap="nowrap">
             <TextType
               key={index}
               text={[current ? current.quote : ""]}
@@ -45,6 +46,7 @@ export function QuotePreview() {
               showCursor={true}
               cursorCharacter="|"
               loop={false}
+              startOnVisible
             />
           </Quote>
         </Text>
