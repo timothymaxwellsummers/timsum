@@ -12,6 +12,16 @@ const VISIBLE_COUNT = 3;
 const GAP_PX = 16;
 const LOOP_BUFFER = VISIBLE_COUNT; // clone buffer on each side for seamless looping
 
+function shuffle<T>(arr: T[]) {
+  // Fisher–Yates; returns a new array
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 function getRealIndex(loopIndex: number, buffer: number, n: number) {
   if (n <= 0) return 0;
   const real = loopIndex - buffer;
@@ -62,7 +72,10 @@ export function GalleryPreview() {
       try {
         const res = await fetch('/api/gallery');
         const data = (await res.json()) as GalleryApiResponse;
-        if (!cancelled) setImages(Array.isArray(data.images) ? data.images : []);
+        if (!cancelled) {
+          const list = Array.isArray(data.images) ? data.images : [];
+          setImages(shuffle(list));
+        }
       } catch {
         if (!cancelled) setImages([]);
       } finally {
