@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { type PointerEvent as ReactPointerEvent, useEffect, useMemo, useRef, useState } from 'react';
 import NextLink from 'next/link';
 import { Box, Container, Flex, Em, IconButton, Link, Text, Button } from '@radix-ui/themes';
 
@@ -27,6 +27,13 @@ export function GalleryPreview() {
   const [isLoading, setIsLoading] = useState(true);
   const indexRef = useRef(0); // left-most visible slide (loop index)
   const stepPxRef = useRef(0);
+  const currentTranslateXRef = useRef(0);
+
+  const isDraggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartTranslateXRef = useRef(0);
+  const activePointerIdRef = useRef<number | null>(null);
+  const prefersReducedMotionRef = useRef(false);
 
   // Keep drag/gesture in mind: this structure (viewport + translating track)
   // is intentionally compatible with pointer-dragging and/or GSAP later.
@@ -41,6 +48,10 @@ export function GalleryPreview() {
     });
     ro.observe(el);
     return () => ro.disconnect();
+  }, []);
+
+  useEffect(() => {
+    prefersReducedMotionRef.current = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
   }, []);
 
   useEffect(() => {
@@ -93,13 +104,25 @@ export function GalleryPreview() {
   function setTrackTransition(enabled: boolean) {
     const el = trackRef.current;
     if (!el) return;
-    el.style.transition = enabled ? 'transform 500ms cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
+    if (!enabled || prefersReducedMotionRef.current) {
+      el.style.transition = 'none';
+      return;
+    }
+    el.style.transition = 'transform 500ms cubic-bezier(0.16, 1, 0.3, 1)';
   }
 
   function setTrackTransform(loopIndex: number) {
     const el = trackRef.current;
     if (!el) return;
     const px = -(loopIndex * stepPxRef.current);
+    currentTranslateXRef.current = px;
+    el.style.transform = `translate3d(${px}px, 0, 0)`;
+  }
+
+  function setTrackTransformPx(px: number) {
+    const el = trackRef.current;
+    if (!el) return;
+    currentTranslateXRef.current = px;
     el.style.transform = `translate3d(${px}px, 0, 0)`;
   }
 
@@ -151,11 +174,64 @@ export function GalleryPreview() {
     return () => el.removeEventListener('transitionend', onEnd);
   }, [isLooping, images.length, buffer]);
 
+  function onPointerDown(e: ReactPointerEvent) {
+    if (!canNavigate) return;
+    if (!viewportRef.current) return;
+    // Only primary button for mouse; allow touch/pen.
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (activePointerIdRef.current !== null) return;
+
+    activePointerIdRef.current = e.pointerId;
+    isDraggingRef.current = true;
+    dragStartXRef.current = e.clientX;
+    dragStartTranslateXRef.current = currentTranslateXRef.current;
+
+    setTrackTransition(false);
+    viewportRef.current.setPointerCapture?.(e.pointerId);
+  }
+
+  function onPointerMove(e: ReactPointerEvent) {
+    if (!isDraggingRef.current) return;
+    if (activePointerIdRef.current !== e.pointerId) return;
+
+    const dx = e.clientX - dragStartXRef.current;
+    setTrackTransformPx(dragStartTranslateXRef.current + dx);
+  }
+
+  function endDrag(e: ReactPointerEvent) {
+    if (!isDraggingRef.current) return;
+    if (activePointerIdRef.current !== e.pointerId) return;
+
+    isDraggingRef.current = false;
+    activePointerIdRef.current = null;
+    viewportRef.current?.releasePointerCapture?.(e.pointerId);
+
+    const step = stepPxRef.current;
+    if (step <= 0) return;
+
+    // Snap to nearest slide.
+    const rawIndex = -currentTranslateXRef.current / step;
+    const nextIndex = Math.round(rawIndex);
+    indexRef.current = nextIndex;
+    setTrackTransition(true);
+    setTrackTransform(indexRef.current);
+  }
+
   return (
     <Container size="3" className="py-10">
     
       <Box className="relative">
-        <Box ref={viewportRef} className="relative overflow-hidden">
+        <Box
+          ref={viewportRef}
+          className={[
+            'relative overflow-hidden select-none touch-pan-y',
+            canNavigate ? (isDraggingRef.current ? 'cursor-grabbing' : 'cursor-grab') : '',
+          ].join(' ')}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
+        >
           {/* Track */}
           <div
             ref={trackRef}
@@ -187,6 +263,7 @@ export function GalleryPreview() {
                       fill
                       sizes="(max-width: 768px) 33vw, 320px"
                       className="object-cover grayscale transition duration-300 group-hover:grayscale-0"
+                      draggable={false}
                     />
                   </div>
                 </div>
