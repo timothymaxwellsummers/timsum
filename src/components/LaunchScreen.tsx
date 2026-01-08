@@ -97,6 +97,13 @@ export function LaunchScreen() {
                   </Text>
                 </NextLink>
               </Link>
+              <Link asChild underline="always" color="gray" size="4">
+                <NextLink href="/quotes">
+                  <Text size="3" weight="medium">
+                    Quotes
+                  </Text>
+                </NextLink>
+              </Link>
             </Flex>
           </div>
         </Box>

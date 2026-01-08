@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { type PointerEvent as ReactPointerEvent, useEffect, useMemo, useRef, useState } from 'react';
 import NextLink from 'next/link';
-import { Box, Container, Flex, Em, IconButton, Link, Text, Button } from '@radix-ui/themes';
+import { Box, Container, Flex, IconButton, Text, Button } from '@radix-ui/themes';
 
 type GalleryApiResponse = { images: string[] };
 
