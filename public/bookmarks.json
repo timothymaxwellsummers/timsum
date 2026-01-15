@@ -23,7 +23,22 @@
     {
       "title": "goodreads",
       "description": "My book ratings",
-      "url": "https://pexels.com"
+      "url": "https://goodreads.com"
+    },
+    {
+      "title": "Raycast",
+      "description": "The launcher I use",
+      "url": "https://raycast.com"
+    },
+    {
+      "title": "Notion Faces",
+      "description": "",
+      "url": "https://faces.notion.com"
+    },
+    {
+      "title": "Cursor",
+      "description": "IDE of choice",
+      "url": "https://cursor.com"
     },
     {
       "title": "Radix UI Themes",

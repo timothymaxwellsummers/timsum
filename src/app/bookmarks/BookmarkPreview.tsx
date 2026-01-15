@@ -22,7 +22,9 @@ function getDomain(url: string) {
 
 function faviconUrlFor(url: string) {
   const domain = getDomain(url);
-  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`;
+  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(
+    domain
+  )}&sz=64`;
 }
 
 export function BookmarkPreview() {
@@ -34,19 +36,27 @@ export function BookmarkPreview() {
         direction="column"
         align="center"
         justify="center"
-        py="9"
+        py="8"
         gap="5"
         style={{ minHeight: "60svh" }}
       >
-        <Flex direction="column" width="100%" gap="4" align="center" style={{ maxWidth: 750 }}>
-          <Flex align="center" gap="2" justify="center">
-            <Bookmark size={16} />
-            <Text size="2" color="gray" weight="medium">
-              Bookmarks
-            </Text>
-          </Flex>
+        <Flex
+          direction="column"
+          width="100%"
+          gap="4"
+          align="center"
+          style={{ maxWidth: 750 }}
+        >
+          <Text size="4">
+            <i>Webstuff I like:</i>
+          </Text>
 
-          <Flex direction="column" gap="2" align="start" style={{ width: "fit-content", maxWidth: "100%" }}>
+          <Flex
+            direction="column"
+            gap="2"
+            align="start"
+            style={{ width: "fit-content", maxWidth: "100%" }}
+          >
             {items.map((b) => (
               <Link asChild key={b.url} underline="always">
                 <a
@@ -68,7 +78,11 @@ export function BookmarkPreview() {
                     className="rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/10"
                     style={{ width: "fit-content", maxWidth: "100%" }}
                   >
-                    <Box width="5" height="5" className="grid place-items-center overflow-hidden rounded-sm">
+                    <Box
+                      width="5"
+                      height="5"
+                      className="grid place-items-center overflow-hidden rounded-sm"
+                    >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={faviconUrlFor(b.url)}
@@ -82,13 +96,10 @@ export function BookmarkPreview() {
                     </Box>
 
                     <Flex align="center" gap="2" style={{ minWidth: 0 }}>
-                        {b.title}
+                      {b.title}
 
                       {b.description ? (
-                        <Text
-                          className="truncate"
-                          color="gray"
-                        >
+                        <Text className="truncate" color="gray">
                           {b.description}
                         </Text>
                       ) : null}
@@ -109,5 +120,3 @@ export function BookmarkPreview() {
     </Container>
   );
 }
-
-

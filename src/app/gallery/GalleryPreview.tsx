@@ -231,101 +231,102 @@ export function GalleryPreview() {
   }
 
   return (
-    <Container size="3" className="py-10">
-    
-      <Box className="relative">
-        <Box
-          ref={viewportRef}
-          className={[
-            'relative overflow-hidden select-none touch-pan-y',
-            canNavigate ? (isDraggingRef.current ? 'cursor-grabbing' : 'cursor-grab') : '',
-          ].join(' ')}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={endDrag}
-          onPointerCancel={endDrag}
-        >
-          {/* Track */}
-          <div
-            ref={trackRef}
-            className="flex will-change-transform motion-reduce:transition-none"
-            style={{
-              gap: `${GAP_PX}px`,
-              padding: `${GAP_PX}px`,
-            }}
+    <Box style={{ paddingBlock: '10rem' }}>
+      <Container size="3">
+        <Box className="relative">
+          <Box
+            ref={viewportRef}
+            className={[
+              'relative overflow-hidden select-none touch-pan-y',
+              canNavigate ? (isDraggingRef.current ? 'cursor-grabbing' : 'cursor-grab') : '',
+            ].join(' ')}
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={endDrag}
+            onPointerCancel={endDrag}
           >
-            {isLoading && images.length === 0 ? (
-              Array.from({ length: VISIBLE_COUNT }).map((_, i) => (
-                <div key={i} className="shrink-0" style={{ width: slideWidth || 280 }}>
-                  <div className="aspect-[3/4] bg-black/10 dark:bg-white/10" />
-                </div>
-              ))
-            ) : images.length === 0 ? (
-              <Box p="4">
-                <Text size="2" color="gray">
-                  No images found in <code className="font-mono">public/gallery</code>.
-                </Text>
-              </Box>
-            ) : (
-              (loopedImages.length ? loopedImages : images).map((src, i) => (
-                <div key={`${src}::${i}`} className="shrink-0" style={{ width: slideWidth || 280 }}>
-                  <div className="group relative aspect-[3/4] overflow-hidden">
-                    <Image
-                      src={src}
-                      alt={`Gallery image ${getRealIndex(i, buffer, images.length) + 1}`}
-                      fill
-                      sizes="(max-width: 768px) 33vw, 320px"
-                      className="object-cover grayscale transition duration-300 group-hover:grayscale-0"
-                      draggable={false}
-                    />
+            {/* Track */}
+            <div
+              ref={trackRef}
+              className="flex will-change-transform motion-reduce:transition-none"
+              style={{
+                gap: `${GAP_PX}px`,
+                padding: `${GAP_PX}px`,
+              }}
+            >
+              {isLoading && images.length === 0 ? (
+                Array.from({ length: VISIBLE_COUNT }).map((_, i) => (
+                  <div key={i} className="shrink-0" style={{ width: slideWidth || 280 }}>
+                    <div className="aspect-[3/4] bg-black/10 dark:bg-white/10" />
                   </div>
-                </div>
-              ))
-            )}
-          </div>
+                ))
+              ) : images.length === 0 ? (
+                <Box p="4">
+                  <Text size="2" color="gray">
+                    No images found in <code className="font-mono">public/gallery</code>.
+                  </Text>
+                </Box>
+              ) : (
+                (loopedImages.length ? loopedImages : images).map((src, i) => (
+                  <div key={`${src}::${i}`} className="shrink-0" style={{ width: slideWidth || 280 }}>
+                    <div className="group relative aspect-[3/4] overflow-hidden">
+                      <Image
+                        src={src}
+                        alt={`Gallery image ${getRealIndex(i, buffer, images.length) + 1}`}
+                        fill
+                        sizes="(max-width: 768px) 33vw, 320px"
+                        className="object-cover grayscale transition duration-300 group-hover:grayscale-0"
+                        draggable={false}
+                      />
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </Box>
         </Box>
-      </Box>
 
-      <Flex mt="2" align="center" justify="between" gap="4">
-        <Button asChild  variant="outline" color="gray" size="1">
-          <NextLink href="/gallery">
-          View full gallery <ArrowRight size={16} />
-          </NextLink>
-        </Button>
+        <Flex mt="2" align="center" justify="between" gap="4">
+          <Button asChild variant="outline" color="gray" size="1">
+            <NextLink href="/gallery">
+              View full gallery <ArrowRight size={16} />
+            </NextLink>
+          </Button>
 
-        {/* Controls */}
-        <Flex justify="end" gap="2">
-          <IconButton
-            type="button"
-            aria-label="Previous images"
-            disabled={!canNavigate}
-            onClick={() => {
-              if (!canNavigate) return;
-              indexRef.current -= 1;
-              setTrackTransition(true);
-              setTrackTransform(indexRef.current);
-            }}
-            variant="soft"
-          >
-            <ChevronLeft size={18} />
-          </IconButton>
-          <IconButton
-            type="button"
-            aria-label="Next images"
-            disabled={!canNavigate}
-            onClick={() => {
-              if (!canNavigate) return;
-              indexRef.current += 1;
-              setTrackTransition(true);
-              setTrackTransform(indexRef.current);
-            }}
-            variant="soft"
-          >
-            <ChevronRight size={18} />
-          </IconButton>
+          {/* Controls */}
+          <Flex justify="end" gap="2">
+            <IconButton
+              type="button"
+              aria-label="Previous images"
+              disabled={!canNavigate}
+              onClick={() => {
+                if (!canNavigate) return;
+                indexRef.current -= 1;
+                setTrackTransition(true);
+                setTrackTransform(indexRef.current);
+              }}
+              variant="soft"
+            >
+              <ChevronLeft size={18} />
+            </IconButton>
+            <IconButton
+              type="button"
+              aria-label="Next images"
+              disabled={!canNavigate}
+              onClick={() => {
+                if (!canNavigate) return;
+                indexRef.current += 1;
+                setTrackTransition(true);
+                setTrackTransform(indexRef.current);
+              }}
+              variant="soft"
+            >
+              <ChevronRight size={18} />
+            </IconButton>
+          </Flex>
         </Flex>
-      </Flex>
-    </Container>
+      </Container>
+    </Box>
   );
 }
 

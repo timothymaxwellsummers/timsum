@@ -63,7 +63,7 @@ export function LaunchScreen() {
                 </a>
               </div>
               <div className="transition-transform duration-200 ease-in-out hover:scale-107 hover:rotate-2">
-                <Link href="./cvTimsum.pdf" target="_blank" style={{ textDecoration: 'none', }}>
+                <Link href="./cv4.pdf" target="_blank" style={{ textDecoration: 'none', }}>
                   <Button variant="soft">CV</Button>
                 </Link>
               </div>

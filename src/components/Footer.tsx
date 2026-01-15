@@ -20,7 +20,7 @@ export function Footer() {
                 </NextLink>
               </Link>
             </Flex>
-      <Text color="gray" size="2">© 2025 Timothy Summers. All rights reserved.</Text>
+      <Text color="gray" size="2">© 2026 Timothy Summers. All rights reserved.</Text>
     </Flex>
   );
 }
