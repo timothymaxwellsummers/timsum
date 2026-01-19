@@ -4,16 +4,13 @@ import { GalleryPreview } from "@/app/gallery/GalleryPreview";
 
 export default function Gallery() {
   return (
-    <Container>
+    <Container size="3" px="4">
       <Flex
         direction="column"
         align="center"
         justify="center"
-        style={{
-          minHeight: "calc(100vh - 120px)",
-          paddingTop: "2rem",
-          paddingBottom: "2rem",
-        }}
+        py="8"
+        style={{ minHeight: "calc(100vh - 120px)" }}
       >
         <Heading as="h1" size="8" mb="4">
           Gallery
@@ -22,9 +19,7 @@ export default function Gallery() {
           A showcase of my creative work and projects.
         </Text>
 
-        <div className="w-full">
-          <GalleryPreview />
-        </div>
+        <GalleryPreview />
 
         <Link asChild>
           <NextLink href="/">
@@ -34,4 +29,4 @@ export default function Gallery() {
       </Flex>
     </Container>
   );
-} 
+}

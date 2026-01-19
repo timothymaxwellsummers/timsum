@@ -2,7 +2,7 @@
 
 import { ArrowRight, Dices } from "lucide-react";
 import quotes from "../../../public/quotes.json";
-import { Button, Flex, Quote, Text } from "@radix-ui/themes";
+import { Button, Container, Flex, Quote, Text } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
 import TextType from "./TextType";
 import NextLink from "next/link";
@@ -24,43 +24,51 @@ export function QuotePreview() {
     }
     setIndex(next);
   };
+
   return (
-    <Flex
-      id="quote-preview"
-      direction="column"
-      align="center"
-      justify="center"
-      style={{ height: "60svh", marginTop: "5svh", marginBottom: "5svh", marginLeft: "2", marginRight: "2" }}
-    >
-      <Flex direction="column" style={{ maxWidth: 750, width: "100%", textAlign: "center" }}>
-        <Text size="2" color="gray" weight="medium" mb="4">
-          {current ? current.author : ""}
-        </Text>
-        <Text size="6">
-          <Quote wrap="nowrap">
-            <TextType
-              key={index}
-              text={[current ? current.quote : ""]}
-              typingSpeed={35}
-              pauseDuration={300}
-              showCursor={true}
-              cursorCharacter="|"
-              loop={false}
-              startOnVisible
-            />
-          </Quote>
-        </Text>
+    <Container id="quote-preview" size="3" px="4">
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        py="8"
+        my="5"
+        style={{ minHeight: "60svh" }}
+      >
+        <Flex
+          direction="column"
+          align="center"
+          style={{ maxWidth: 750, width: "100%", textAlign: "center" }}
+        >
+          <Text size="2" color="gray" weight="medium" mb="4">
+            {current ? current.author : ""}
+          </Text>
+          <Text size="6">
+            <Quote wrap="nowrap">
+              <TextType
+                key={index}
+                text={[current ? current.quote : ""]}
+                typingSpeed={35}
+                pauseDuration={300}
+                showCursor={true}
+                cursorCharacter="|"
+                loop={false}
+                startOnVisible
+              />
+            </Quote>
+          </Text>
+        </Flex>
+        <Flex direction="row" gap="2" mt="4">
+          <Button variant="soft" onClick={handleNewQuote} size="1">
+            New Quote <Dices size={16} />
+          </Button>
+          <Button asChild variant="outline" color="gray" size="1">
+            <NextLink href="/quotes">
+              All Quotes <ArrowRight size={16} />
+            </NextLink>
+          </Button>
+        </Flex>
       </Flex>
-      <Flex direction="row" gap="2" mt="4">
-        <Button variant="soft" onClick={handleNewQuote} size="1">
-          New Quote <Dices size={16} />
-        </Button>
-        <Button asChild variant="outline" color="gray" size="1">
-          <NextLink href="/quotes">
-            All Quotes <ArrowRight size={16} />
-          </NextLink>
-        </Button>
-      </Flex>
-    </Flex>
+    </Container>
   );
 }

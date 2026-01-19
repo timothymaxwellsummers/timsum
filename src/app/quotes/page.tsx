@@ -4,21 +4,26 @@ import quotes from "../../../public/quotes.json";
 
 export default function Quotes() {
   return (
-    <Container>
-      <Flex direction="column" align="center" justify="center" style={{ minHeight: "calc(100vh - 120px)", paddingTop: "2rem", paddingBottom: "2rem" }}>
+    <Container size="3" px="4">
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        py="8"
+        style={{ minHeight: "calc(100vh - 120px)" }}
+      >
         <Heading as="h1" size="8" mb="4">
           Quotes
         </Heading>
         <Text size="4" color="gray" mb="3">
           A collection of quotes I have gathered over the years.
         </Text>
-        <Flex direction="column" gap="5" mt="6" mx="2" maxWidth="600px" mb="6">
+
+        <Flex direction="column" gap="5" mt="6" width="100%" maxWidth="600px" mb="6">
           {quotes.quotes.map((q, i) => (
             <Blockquote key={i}>
               <Text size="4">
-                <Quote>
-                  {q.quote}
-                </Quote>
+                <Quote>{q.quote}</Quote>
               </Text>
               <Text as="p" size="2" color="gray" mt="2">
                 {q.author}
@@ -26,7 +31,8 @@ export default function Quotes() {
             </Blockquote>
           ))}
         </Flex>
-        <Link asChild mb="6" mt="4">
+
+        <Link asChild mt="4" mb="6">
           <NextLink href="/">
             <Text size="3" weight="medium">← Back to Home</Text>
           </NextLink>
@@ -34,4 +40,4 @@ export default function Quotes() {
       </Flex>
     </Container>
   );
-} 
+}

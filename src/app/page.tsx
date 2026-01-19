@@ -1,6 +1,4 @@
 import { LaunchScreen } from "@/components/LaunchScreen";
-import { Education } from "@/components/Education";
-import { Experience } from "@/components/Experience";
 import { Footer } from "@/components/Footer";
 import { BookmarkPreview } from "@/app/bookmarks/BookmarkPreview";
 import { QuotePreview } from "@/app/quotes/QuotePreview";
@@ -15,8 +13,6 @@ export default function Home() {
         <QuotePreview />
         <BookmarkPreview />
         <GalleryPreview />
-        {/* <Experience /> */}
-        {/* <Education /> */}
         <Footer />
       </Box>
     </main>

@@ -5,6 +5,7 @@ import NextLink from "next/link";
 
 type BookmarkItem = {
   title: string;
+  description?: string;
   url: string;
 };
 
@@ -26,16 +27,13 @@ export default function Bookmarks() {
   const items = bookmarks.bookmarks as BookmarkItem[];
 
   return (
-    <Container>
+    <Container size="3" px="4">
       <Flex
         direction="column"
         align="center"
         justify="center"
-        style={{
-          minHeight: "calc(100vh - 120px)",
-          paddingTop: "2rem",
-          paddingBottom: "2rem",
-        }}
+        py="8"
+        style={{ minHeight: "calc(100vh - 120px)" }}
       >
         <Heading as="h1" size="8" mb="4">
           Bookmarks
@@ -44,17 +42,12 @@ export default function Bookmarks() {
           My curated collection of useful resources.
         </Text>
 
-        <Flex direction="column" gap="2" mx="2" maxWidth="750px" width="100%" mb="6">
+        <Flex direction="column" gap="2" width="100%" maxWidth="750px" mb="6">
           {items.map((b) => {
             const host = getHostname(b.url);
             return (
               <Link asChild key={b.url} underline="hover" color="gray">
-                <a
-                  href={b.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ textDecoration: "none" }}
-                >
+                <a href={b.url} target="_blank" rel="noreferrer">
                   <Flex
                     align="center"
                     justify="between"
@@ -105,4 +98,4 @@ export default function Bookmarks() {
       </Flex>
     </Container>
   );
-} 
+}

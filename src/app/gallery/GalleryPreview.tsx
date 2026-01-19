@@ -10,10 +10,9 @@ type GalleryApiResponse = { images: string[] };
 
 const VISIBLE_COUNT = 3;
 const GAP_PX = 16;
-const LOOP_BUFFER = VISIBLE_COUNT; // clone buffer on each side for seamless looping
+const LOOP_BUFFER = VISIBLE_COUNT;
 
 function shuffle<T>(arr: T[]) {
-  // Fisher–Yates; returns a new array
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -35,7 +34,7 @@ export function GalleryPreview() {
 
   const [images, setImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const indexRef = useRef(0); // left-most visible slide (loop index)
+  const indexRef = useRef(0);
   const stepPxRef = useRef(0);
   const currentTranslateXRef = useRef(0);
 
@@ -44,9 +43,6 @@ export function GalleryPreview() {
   const dragStartTranslateXRef = useRef(0);
   const activePointerIdRef = useRef<number | null>(null);
   const prefersReducedMotionRef = useRef(false);
-
-  // Keep drag/gesture in mind: this structure (viewport + translating track)
-  // is intentionally compatible with pointer-dragging and/or GSAP later.
 
   useEffect(() => {
     if (!viewportRef.current) return;
@@ -139,7 +135,6 @@ export function GalleryPreview() {
     el.style.transform = `translate3d(${px}px, 0, 0)`;
   }
 
-  // Initialize / reset position when images load or when layout changes.
   useEffect(() => {
     if (!trackRef.current) return;
 
@@ -157,7 +152,6 @@ export function GalleryPreview() {
     requestAnimationFrame(() => setTrackTransition(true));
   }, [images.length, buffer, isLooping, viewportWidth]);
 
-  // Seamless looping: snap the track (imperatively) when we hit the cloned buffers.
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
@@ -190,7 +184,6 @@ export function GalleryPreview() {
   function onPointerDown(e: ReactPointerEvent) {
     if (!canNavigate) return;
     if (!viewportRef.current) return;
-    // Only primary button for mouse; allow touch/pen.
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     if (activePointerIdRef.current !== null) return;
 
@@ -222,7 +215,6 @@ export function GalleryPreview() {
     const step = stepPxRef.current;
     if (step <= 0) return;
 
-    // Snap to nearest slide.
     const rawIndex = -currentTranslateXRef.current / step;
     const nextIndex = Math.round(rawIndex);
     indexRef.current = nextIndex;
@@ -231,7 +223,7 @@ export function GalleryPreview() {
   }
 
   return (
-    <Box style={{ paddingBlock: '10rem' }}>
+    <Box py="9">
       <Container size="3">
         <Box className="relative">
           <Box
@@ -245,14 +237,10 @@ export function GalleryPreview() {
             onPointerUp={endDrag}
             onPointerCancel={endDrag}
           >
-            {/* Track */}
             <div
               ref={trackRef}
               className="flex will-change-transform motion-reduce:transition-none"
-              style={{
-                gap: `${GAP_PX}px`,
-                padding: `${GAP_PX}px`,
-              }}
+              style={{ gap: `${GAP_PX}px`, padding: `${GAP_PX}px` }}
             >
               {isLoading && images.length === 0 ? (
                 Array.from({ length: VISIBLE_COUNT }).map((_, i) => (
@@ -293,7 +281,6 @@ export function GalleryPreview() {
             </NextLink>
           </Button>
 
-          {/* Controls */}
           <Flex justify="end" gap="2">
             <IconButton
               type="button"
@@ -329,4 +316,3 @@ export function GalleryPreview() {
     </Box>
   );
 }
-

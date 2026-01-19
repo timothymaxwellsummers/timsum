@@ -1,6 +1,6 @@
 import bookmarks from "../../../public/bookmarks.json";
 import NextLink from "next/link";
-import { ArrowRight, Bookmark } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Box, Button, Container, Flex, Link, Text } from "@radix-ui/themes";
 
 type BookmarkItem = {
@@ -11,7 +11,7 @@ type BookmarkItem = {
 
 const PREVIEW_COUNT = 6;
 
-function getDomain(url: string) {
+function getHostname(url: string) {
   try {
     const { hostname } = new URL(url);
     return hostname.replace(/^www\./, "");
@@ -21,10 +21,8 @@ function getDomain(url: string) {
 }
 
 function faviconUrlFor(url: string) {
-  const domain = getDomain(url);
-  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(
-    domain
-  )}&sz=64`;
+  const domain = getHostname(url);
+  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`;
 }
 
 export function BookmarkPreview() {
@@ -63,12 +61,7 @@ export function BookmarkPreview() {
                   href={b.url}
                   target="_blank"
                   rel="noreferrer"
-                  style={{
-                    display: "inline-flex",
-                    width: "fit-content",
-                    maxWidth: "100%",
-                    textDecoration: "inherit",
-                  }}
+                  style={{ display: "inline-flex", width: "fit-content", maxWidth: "100%" }}
                 >
                   <Flex
                     align="center"
@@ -97,12 +90,11 @@ export function BookmarkPreview() {
 
                     <Flex align="center" gap="2" style={{ minWidth: 0 }}>
                       {b.title}
-
-                      {b.description ? (
+                      {b.description && (
                         <Text className="truncate" color="gray">
                           {b.description}
                         </Text>
-                      ) : null}
+                      )}
                     </Flex>
                   </Flex>
                 </a>

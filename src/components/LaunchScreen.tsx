@@ -45,36 +45,32 @@ export function LaunchScreen() {
           >
             <Flex gap="2" mb="5" wrap="wrap">
               <div className="transition-transform duration-200 ease-in-out hover:scale-107 hover:rotate-2">
-                <a
-                  href="https://www.linkedin.com/in/timothymaxwellsummers/"
-                  target="_blank"
-                  style={{ textDecoration: "none" }}
-                >
-                  <Button variant="soft">LinkedIn</Button>
-                </a>
-              </div>
-              <div className="transition-transform duration-200 ease-in-out hover:scale-107 hover:rotate-2">
-                <a
-                  href="mailto:me@timsum.net"
-                  target="_blank"
-                  style={{ textDecoration: "none" }}
-                >
-                  <Button variant="soft">Email</Button>
-                </a>
-              </div>
-              <div className="transition-transform duration-200 ease-in-out hover:scale-107 hover:rotate-2">
-                <Link href="./cv4.pdf" target="_blank" style={{ textDecoration: 'none', }}>
-                  <Button variant="soft">CV</Button>
+                <Link asChild>
+                  <a href="https://www.linkedin.com/in/timothymaxwellsummers/" target="_blank" rel="noreferrer">
+                    <Button variant="soft">LinkedIn</Button>
+                  </a>
                 </Link>
               </div>
               <div className="transition-transform duration-200 ease-in-out hover:scale-107 hover:rotate-2">
-                <a
-                  href="https://github.com/timothymaxwellsummers"
-                  target="_blank"
-                  style={{ textDecoration: "none" }}
-                > 
-                  <Button variant="soft">GitHub</Button>
-                </a>
+                <Link asChild>
+                  <a href="mailto:me@timsum.net">
+                    <Button variant="soft">Email</Button>
+                  </a>
+                </Link>
+              </div>
+              <div className="transition-transform duration-200 ease-in-out hover:scale-107 hover:rotate-2">
+                <Link asChild>
+                  <a href="./cv4.pdf" target="_blank" rel="noreferrer">
+                    <Button variant="soft">CV</Button>
+                  </a>
+                </Link>
+              </div>
+              <div className="transition-transform duration-200 ease-in-out hover:scale-107 hover:rotate-2">
+                <Link asChild>
+                  <a href="https://github.com/timothymaxwellsummers" target="_blank" rel="noreferrer">
+                    <Button variant="soft">GitHub</Button>
+                  </a>
+                </Link>
               </div>
             </Flex>
           </div>
@@ -83,25 +79,19 @@ export function LaunchScreen() {
             style={{ opacity: 0 }}
           >
             <Flex gap="4" wrap="wrap">
-              <Link asChild underline="always" color="gray" size="4">
+              <Link asChild underline="always" color="gray">
                 <NextLink href="/bookmarks">
-                  <Text size="3" weight="medium">
-                    Bookmarks
-                  </Text>
+                  <Text size="3" weight="medium">Bookmarks</Text>
                 </NextLink>
               </Link>
-              <Link asChild underline="always" color="gray" size="4">
+              <Link asChild underline="always" color="gray">
                 <NextLink href="/gallery">
-                  <Text size="3" weight="medium">
-                    Gallery
-                  </Text>
+                  <Text size="3" weight="medium">Gallery</Text>
                 </NextLink>
               </Link>
-              <Link asChild underline="always" color="gray" size="4">
+              <Link asChild underline="always" color="gray">
                 <NextLink href="/quotes">
-                  <Text size="3" weight="medium">
-                    Quotes
-                  </Text>
+                  <Text size="3" weight="medium">Quotes</Text>
                 </NextLink>
               </Link>
             </Flex>
@@ -114,10 +104,12 @@ export function LaunchScreen() {
         style={{ opacity: 0 }}
       >
         <Flex justify="center" p="8">
-          <Link href="#quote-preview">
-            <Button variant="classic" size="3">
-              Explore <ArrowDown size={20} className="-m-1.5" />
-            </Button>
+          <Link asChild>
+            <a href="#quote-preview">
+              <Button variant="classic" size="3">
+                Explore <ArrowDown size={20} className="-m-1.5" />
+              </Button>
+            </a>
           </Link>
         </Flex>
       </div>
