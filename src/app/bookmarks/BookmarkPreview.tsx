@@ -29,24 +29,28 @@ export function BookmarkPreview() {
   const items = (bookmarks.bookmarks as BookmarkItem[]).slice(0, PREVIEW_COUNT);
 
   return (
-    <Container id="bookmarks-preview" size="3">
+    <Container
+      id="bookmarks-preview"
+      size="3"
+      px={{ initial: "4", md: "6" }}
+      py={{ initial: "7", sm: "8", md: "9" }}
+    >
       <Flex
         direction="column"
         align="center"
         justify="center"
-        py="8"
         gap="5"
         style={{ minHeight: "60svh" }}
       >
         <Flex
           direction="column"
           width="100%"
-          gap="4"
+          gap="6"
           align="center"
           style={{ maxWidth: 750 }}
         >
-          <Text size="4">
-            <i>Webstuff I like:</i>
+          <Text size="2" color="gray" weight="medium">
+            Webstuff I like:
           </Text>
 
           <Flex
@@ -91,7 +95,7 @@ export function BookmarkPreview() {
                     <Flex align="center" gap="2" style={{ minWidth: 0 }}>
                       {b.title}
                       {b.description && (
-                        <Text className="truncate" color="gray">
+                        <Text className="truncate" style={{ color: "var(--gray-12)" }}>
                           {b.description}
                         </Text>
                       )}

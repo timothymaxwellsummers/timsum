@@ -3,18 +3,15 @@ import { Footer } from "@/components/Footer";
 import { BookmarkPreview } from "@/app/bookmarks/BookmarkPreview";
 import { QuotePreview } from "@/app/quotes/QuotePreview";
 import { GalleryPreview } from "@/app/gallery/GalleryPreview";
-import { Box } from "@radix-ui/themes";
 
 export default function Home() {
   return (
     <main>
-      <Box px="2">
-        <LaunchScreen />
-        <QuotePreview />
-        <BookmarkPreview />
-        <GalleryPreview />
-        <Footer />
-      </Box>
+      <LaunchScreen />
+      <QuotePreview />
+      <BookmarkPreview />
+      <GalleryPreview />
+      <Footer />
     </main>
   );
 }

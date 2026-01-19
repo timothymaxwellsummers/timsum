@@ -26,13 +26,16 @@ export function QuotePreview() {
   };
 
   return (
-    <Container id="quote-preview" size="3" px="4">
+    <Container
+      id="quote-preview"
+      size="3"
+      px={{ initial: "4", md: "6" }}
+      py={{ initial: "7", sm: "8", md: "9" }}
+    >
       <Flex
         direction="column"
         align="center"
         justify="center"
-        py="8"
-        my="5"
         style={{ minHeight: "60svh" }}
       >
         <Flex

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Theme } from '@radix-ui/themes';
-import { ThemeProvider } from 'next-themes';
-import { ReactNode } from 'react';
+import { Theme } from "@radix-ui/themes";
+import { ThemeProvider } from "next-themes";
+import { ReactNode } from "react";
 
 interface ProvidersProps {
   children: ReactNode;
@@ -24,10 +24,8 @@ export default function Providers({ children }: ProvidersProps) {
         radius="full"
       >
         <div className="noise-overlay"></div>
-        <div className="content-wrapper">
-          {children}
-        </div>
+        <div className="content-wrapper">{children}</div>
       </Theme>
     </ThemeProvider>
   );
-} 
+}
