@@ -1,7 +1,23 @@
+import type { Metadata } from "next";
 import bookmarks from "../../../public/bookmarks.json";
 import { Container, Flex, Heading, Text, Link } from "@radix-ui/themes";
 import NextLink from "next/link";
 import { BookmarkItem, BookmarkLink } from "./BookmarkLink";
+
+export const metadata: Metadata = {
+  title: "Bookmarks",
+  description: "A curated collection of helpful tools and websites by Timothy Summers.",
+  openGraph: {
+    title: "Bookmarks | tim's site",
+    description: "A curated collection of helpful tools and websites by Timothy Summers.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bookmarks | tim's site",
+    description: "A curated collection of helpful tools and websites by Timothy Summers.",
+  },
+};
 
 export default function Bookmarks() {
   const items = bookmarks.bookmarks as BookmarkItem[];

@@ -1,6 +1,22 @@
+import type { Metadata } from "next";
 import { Container, Flex, Heading, Text, Link, Blockquote, Quote } from "@radix-ui/themes";
 import NextLink from "next/link";
 import quotes from "../../../public/quotes.json";
+
+export const metadata: Metadata = {
+  title: "Quotes",
+  description: "A collection of inspiring quotes gathered over the years by Timothy Summers.",
+  openGraph: {
+    title: "Quotes | tim's site",
+    description: "A collection of inspiring quotes gathered over the years by Timothy Summers.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Quotes | tim's site",
+    description: "A collection of inspiring quotes gathered over the years by Timothy Summers.",
+  },
+};
 
 export default function Quotes() {
   return (
