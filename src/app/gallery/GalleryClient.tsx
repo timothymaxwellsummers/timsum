@@ -52,10 +52,10 @@ export function GalleryClient() {
         py="8"
         style={{ minHeight: "calc(100vh - 120px)" }}
       >
-        <Heading as="h1" size="8" mb="4">
+        <Heading as="h1" size="8" mb="1">
           Gallery
         </Heading>
-        <Text size="4" color="gray" mb="6">
+        <Text as="p" size="4" color="gray" mb="5">
           As seen through my iPhone.
         </Text>
 

@@ -31,16 +31,16 @@ export default function Bookmarks() {
         py="8"
         style={{ minHeight: "calc(100vh - 120px)" }}
       >
-        <Heading as="h1" size="8" mb="4">
+        <Heading as="h1" size="8" mb="1">
           Bookmarks
         </Heading>
-        <Text size="4" color="gray" mb="6">
+        <Text as="p" size="4" color="gray" mb="5">
           Helpful tools and sites I&apos;ve found.
         </Text>
 
         <Flex
           direction="column"
-          gap="2"
+          gap="3"
           align="start"
           mb="6"
           style={{ width: "fit-content", maxWidth: "100%" }}

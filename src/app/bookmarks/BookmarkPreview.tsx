@@ -36,7 +36,7 @@ export function BookmarkPreview() {
 
           <Flex
             direction="column"
-            gap="2"
+            gap="3"
             align="start"
             style={{ width: "fit-content", maxWidth: "100%" }}
           >
