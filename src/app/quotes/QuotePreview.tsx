@@ -54,16 +54,37 @@ export function QuotePreview() {
           </Text>
           <Text size="6">
             <Quote wrap={isLargeScreen ? "nowrap" : undefined}>
-              <TextType
-                key={index}
-                text={[current ? current.quote : ""]}
-                typingSpeed={35}
-                pauseDuration={300}
-                showCursor={true}
-                cursorCharacter="|"
-                loop={false}
-                startOnVisible
-              />
+              <span style={{ position: "relative", display: "inline-block" }}>
+                {/* Invisible full text to reserve layout space */}
+                <span
+                  style={{ visibility: "hidden" }}
+                  aria-hidden="true"
+                >
+                  {current ? current.quote : "\u00A0"}
+                  {/* Extra space to account for cursor */}
+                  <span className="ml-6">|</span>
+                </span>
+                {/* Animated text positioned on top */}
+                <span
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                  }}
+                >
+                  <TextType
+                    key={index}
+                    text={[current ? current.quote : ""]}
+                    typingSpeed={35}
+                    pauseDuration={300}
+                    showCursor={true}
+                    cursorCharacter="|"
+                    loop={false}
+                    startOnVisible
+                  />
+                </span>
+              </span>
             </Quote>
           </Text>
         </Flex>
