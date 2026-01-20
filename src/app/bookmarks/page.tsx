@@ -35,7 +35,7 @@ export default function Bookmarks() {
           Bookmarks
         </Heading>
         <Text size="4" color="gray" mb="6">
-          Helpful tools and sites I've found.
+          Helpful tools and sites I&apos;ve found.
         </Text>
 
         <Flex
