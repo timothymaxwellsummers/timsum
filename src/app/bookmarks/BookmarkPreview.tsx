@@ -13,7 +13,7 @@ export function BookmarkPreview() {
     <Container
       id="bookmarks-preview"
       size="3"
-      px={{ initial: "4", md: "6" }}
+      px={{ initial: "4", sm: "5", md: "6" }}
       py={{ initial: "7", sm: "8", md: "9" }}
     >
       <Flex

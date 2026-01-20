@@ -44,7 +44,7 @@ export default function Gallery() {
   }, []);
 
   return (
-    <Container size="3" px="4">
+    <Container size="3" px="1">
       <Flex
         direction="column"
         align="center"

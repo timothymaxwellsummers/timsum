@@ -9,9 +9,15 @@ import NextLink from "next/link";
 
 export function QuotePreview() {
   const [index, setIndex] = useState<number>(-1);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
     setIndex(Math.floor(Math.random() * quotes.quotes.length));
+
+    const checkScreenSize = () => setIsLargeScreen(window.innerWidth >= 640);
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
   const current = index >= 0 ? quotes.quotes[index] : null;
@@ -47,7 +53,7 @@ export function QuotePreview() {
             {current ? current.author : ""}
           </Text>
           <Text size="6">
-            <Quote wrap="nowrap">
+            <Quote wrap={isLargeScreen ? "nowrap" : undefined}>
               <TextType
                 key={index}
                 text={[current ? current.quote : ""]}

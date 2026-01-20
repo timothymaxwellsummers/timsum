@@ -97,18 +97,41 @@ export function GalleryPreview() {
   const buffer = useMemo(() => Math.min(LOOP_BUFFER, images.length), [images.length]);
   const isLooping = images.length > VISIBLE_COUNT;
 
+  // On mobile, make images larger (overflow the container) so center image is prominent
+  // with side images peeking from edges
   const slideWidth = useMemo(() => {
     if (viewportWidth <= 0) return 0;
     const gaps = GAP_PX * (VISIBLE_COUNT - 1);
-    return Math.max(1, (viewportWidth - gaps) / VISIBLE_COUNT);
+    const baseWidth = (viewportWidth - gaps) / VISIBLE_COUNT;
+    
+    // On mobile: scale up images so they overflow, creating the peek effect
+    if (viewportWidth < 640) {
+      return baseWidth * 2.2; // Images ~2.2x larger, causing overflow
+    }
+    if (viewportWidth < 1024) {
+      return baseWidth * 1.4; // Slight overflow on tablet
+    }
+    return baseWidth * 0.85; // Desktop: slightly smaller
   }, [viewportWidth]);
 
   const stepPx = slideWidth + GAP_PX;
   const canNavigate = isLooping;
 
+  // Center offset: on mobile/tablet, center the current image in the viewport
+  const centerOffset = useMemo(() => {
+    if (viewportWidth <= 0 || slideWidth <= 0) return 0;
+    const totalTrackWidth = VISIBLE_COUNT * slideWidth + (VISIBLE_COUNT - 1) * GAP_PX;
+    // Only apply centering when images overflow the viewport
+    if (totalTrackWidth <= viewportWidth) return 0;
+    return (viewportWidth - slideWidth) / 2;
+  }, [viewportWidth, slideWidth]);
+
+  const centerOffsetRef = useRef(0);
+
   useEffect(() => {
     stepPxRef.current = stepPx;
-  }, [stepPx]);
+    centerOffsetRef.current = centerOffset;
+  }, [stepPx, centerOffset]);
 
   function setTrackTransition(enabled: boolean) {
     const el = trackRef.current;
@@ -123,7 +146,7 @@ export function GalleryPreview() {
   function setTrackTransform(loopIndex: number) {
     const el = trackRef.current;
     if (!el) return;
-    const px = -(loopIndex * stepPxRef.current);
+    const px = -(loopIndex * stepPxRef.current) + centerOffsetRef.current;
     currentTranslateXRef.current = px;
     el.style.transform = `translate3d(${px}px, 0, 0)`;
   }
@@ -215,7 +238,8 @@ export function GalleryPreview() {
     const step = stepPxRef.current;
     if (step <= 0) return;
 
-    const rawIndex = -currentTranslateXRef.current / step;
+    // Account for center offset when calculating the index
+    const rawIndex = -(currentTranslateXRef.current - centerOffsetRef.current) / step;
     const nextIndex = Math.round(rawIndex);
     indexRef.current = nextIndex;
     setTrackTransition(true);
@@ -226,9 +250,9 @@ export function GalleryPreview() {
     <Container
       size="3"
       px={{ initial: "4", md: "6" }}
-      style={{ paddingBlock: "clamp(90px, 12vw, 160px)" }}
+      style={{ paddingBlock: "clamp(120px, 12vw, 160px)" }}
     >
-      <Box className="relative">
+      <Box className="relative" mx={{ initial: "-4", md: "0" }}>
         <Box
           ref={viewportRef}
           className={[
@@ -265,7 +289,7 @@ export function GalleryPreview() {
                       src={src}
                       alt={`Gallery image ${getRealIndex(i, buffer, images.length) + 1}`}
                       fill
-                      sizes="(max-width: 768px) 33vw, 320px"
+                      sizes="(max-width: 640px) 75vw, (max-width: 1024px) 45vw, 33vw"
                       className="object-cover grayscale transition duration-300 group-hover:grayscale-0"
                       draggable={false}
                     />
