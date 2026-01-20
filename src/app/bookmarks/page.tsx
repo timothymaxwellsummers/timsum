@@ -1,27 +1,7 @@
 import bookmarks from "../../../public/bookmarks.json";
-import { ArrowUpRight } from "lucide-react";
-import { Box, Container, Flex, Heading, Text, Link } from "@radix-ui/themes";
+import { Container, Flex, Heading, Text, Link } from "@radix-ui/themes";
 import NextLink from "next/link";
-
-type BookmarkItem = {
-  title: string;
-  description?: string;
-  url: string;
-};
-
-function getHostname(url: string) {
-  try {
-    const { hostname } = new URL(url);
-    return hostname.replace(/^www\./, "");
-  } catch {
-    return url;
-  }
-}
-
-function faviconUrlFor(url: string) {
-  const domain = getHostname(url);
-  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=64`;
-}
+import { BookmarkItem, BookmarkLink } from "./BookmarkLink";
 
 export default function Bookmarks() {
   const items = bookmarks.bookmarks as BookmarkItem[];
@@ -39,55 +19,19 @@ export default function Bookmarks() {
           Bookmarks
         </Heading>
         <Text size="4" color="gray" mb="6">
-          My curated collection of useful resources.
+          Helpful tools and sites I've found.
         </Text>
 
-        <Flex direction="column" gap="2" width="100%" maxWidth="750px" mb="6">
-          {items.map((b) => {
-            const host = getHostname(b.url);
-            return (
-              <Link asChild key={b.url} underline="hover" color="gray">
-                <a href={b.url} target="_blank" rel="noreferrer">
-                  <Flex
-                    align="center"
-                    justify="between"
-                    gap="3"
-                    px="3"
-                    py="2"
-                    className="rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/10"
-                  >
-                    <Flex align="center" gap="3" style={{ minWidth: 0 }}>
-                      <Box
-                        width="5"
-                        height="5"
-                        className="grid place-items-center overflow-hidden rounded bg-black/10 dark:bg-white/10"
-                      >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={faviconUrlFor(b.url)}
-                          alt=""
-                          width={18}
-                          height={18}
-                          loading="lazy"
-                          decoding="async"
-                          style={{ display: "block" }}
-                        />
-                      </Box>
-                      <Box style={{ minWidth: 0 }}>
-                        <Text as="div" size="3" weight="medium" className="truncate">
-                          {b.title}
-                        </Text>
-                        <Text as="div" size="1" color="gray" className="truncate">
-                          {host}
-                        </Text>
-                      </Box>
-                    </Flex>
-                    <ArrowUpRight size={16} />
-                  </Flex>
-                </a>
-              </Link>
-            );
-          })}
+        <Flex
+          direction="column"
+          gap="2"
+          align="start"
+          mb="6"
+          style={{ width: "fit-content", maxWidth: "100%" }}
+        >
+          {items.map((b) => (
+            <BookmarkLink key={b.url} bookmark={b} />
+          ))}
         </Flex>
 
         <Link asChild>

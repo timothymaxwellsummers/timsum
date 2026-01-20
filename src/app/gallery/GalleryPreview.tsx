@@ -9,7 +9,7 @@ import { Box, Container, Flex, IconButton, Text, Button } from '@radix-ui/themes
 type GalleryApiResponse = { images: string[] };
 
 const VISIBLE_COUNT = 3;
-const GAP_PX = 16;
+const GAP_PX = 4;
 const LOOP_BUFFER = VISIBLE_COUNT;
 
 function shuffle<T>(arr: T[]) {

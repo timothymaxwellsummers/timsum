@@ -16,14 +16,14 @@
       "url": "https://justinguitar.com"
     },
     {
-      "title": "Unsplash",
-      "description": "High quality images",
-      "url": "https://unsplash.com"
+      "title": "goodreads",
+      "description": "Books I've read and want to read",
+      "url": "https://www.goodreads.com/user/show/194737784-timothy-summers"
     },
     {
-      "title": "goodreads",
-      "description": "My book ratings",
-      "url": "https://goodreads.com"
+      "title": "this is tim",
+      "description": "A excerpt of music I like",
+      "url": "https://music.apple.com/de/playlist/this-is-tim/pl.u-6mo44PmfE1pZRo?l=en-GB"
     },
     {
       "title": "Raycast",
@@ -31,9 +31,19 @@
       "url": "https://raycast.com"
     },
     {
+      "title": "Unsplash",
+      "description": "High quality images",
+      "url": "https://unsplash.com"
+    },
+    {
       "title": "Notion Faces",
       "description": "",
       "url": "https://faces.notion.com"
+    },
+    {
+      "title": "React Bits",
+      "description": "Fun React snippets",
+      "url": "https://reactbits.dev"
     },
     {
       "title": "Cursor",
@@ -42,13 +52,13 @@
     },
     {
       "title": "Radix UI Themes",
-      "description": "",
+      "description": "Components used on this site",
       "url": "https://www.radix-ui.com/themes/docs/overview/getting-started"
     },
     {
-      "title": "Tailwind CSS",
-      "description": "",
-      "url": "https://tailwindcss.com/docs"
+      "title": "Vercel",
+      "description": "Where this site is hosted",
+      "url": "https://vercel.com"
     }
   ]
 }
