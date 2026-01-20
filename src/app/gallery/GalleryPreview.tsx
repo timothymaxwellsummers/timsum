@@ -1,0 +1,344 @@
+'use client';
+
+import Image from 'next/image';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { type PointerEvent as ReactPointerEvent, useEffect, useMemo, useRef, useState } from 'react';
+import NextLink from 'next/link';
+import { Box, Container, Flex, IconButton, Text, Button } from '@radix-ui/themes';
+
+type GalleryApiResponse = { images: string[] };
+
+const VISIBLE_COUNT = 3;
+const GAP_PX = 4;
+const LOOP_BUFFER = VISIBLE_COUNT;
+
+function shuffle<T>(arr: T[]) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function getRealIndex(loopIndex: number, buffer: number, n: number) {
+  if (n <= 0) return 0;
+  const real = loopIndex - buffer;
+  return ((real % n) + n) % n;
+}
+
+export function GalleryPreview() {
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [viewportWidth, setViewportWidth] = useState(0);
+
+  const [images, setImages] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const indexRef = useRef(0);
+  const stepPxRef = useRef(0);
+  const currentTranslateXRef = useRef(0);
+
+  const isDraggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartTranslateXRef = useRef(0);
+  const activePointerIdRef = useRef<number | null>(null);
+  const prefersReducedMotionRef = useRef(false);
+
+  useEffect(() => {
+    if (!viewportRef.current) return;
+
+    const el = viewportRef.current;
+    const ro = new ResizeObserver((entries) => {
+      const w = entries[0]?.contentRect?.width ?? 0;
+      setViewportWidth(w);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  useEffect(() => {
+    prefersReducedMotionRef.current = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      setIsLoading(true);
+      try {
+        const res = await fetch('/api/gallery');
+        const data = (await res.json()) as GalleryApiResponse;
+        if (!cancelled) {
+          const list = Array.isArray(data.images) ? data.images : [];
+          setImages(shuffle(list));
+        }
+      } catch {
+        if (!cancelled) setImages([]);
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    }
+
+    void load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const loopedImages = useMemo(() => {
+    if (images.length === 0) return [];
+    const buffer = Math.min(LOOP_BUFFER, images.length);
+    if (images.length <= VISIBLE_COUNT) return images;
+    const head = images.slice(0, buffer);
+    const tail = images.slice(-buffer);
+    return [...tail, ...images, ...head];
+  }, [images]);
+
+  const buffer = useMemo(() => Math.min(LOOP_BUFFER, images.length), [images.length]);
+  const isLooping = images.length > VISIBLE_COUNT;
+
+  // On mobile, make images larger (overflow the container) so center image is prominent
+  // with side images peeking from edges
+  const slideWidth = useMemo(() => {
+    if (viewportWidth <= 0) return 0;
+    const gaps = GAP_PX * (VISIBLE_COUNT - 1);
+    const baseWidth = (viewportWidth - gaps) / VISIBLE_COUNT;
+    
+    // On mobile: scale up images so they overflow, creating the peek effect
+    if (viewportWidth < 640) {
+      return baseWidth * 2.2; // Images ~2.2x larger, causing overflow
+    }
+    if (viewportWidth < 1024) {
+      return baseWidth * 1.4; // Slight overflow on tablet
+    }
+    return baseWidth * 0.85; // Desktop: slightly smaller
+  }, [viewportWidth]);
+
+  const stepPx = slideWidth + GAP_PX;
+  const canNavigate = isLooping;
+
+  // Center offset: on mobile/tablet, center the current image in the viewport
+  const centerOffset = useMemo(() => {
+    if (viewportWidth <= 0 || slideWidth <= 0) return 0;
+    const totalTrackWidth = VISIBLE_COUNT * slideWidth + (VISIBLE_COUNT - 1) * GAP_PX;
+    // Only apply centering when images overflow the viewport
+    if (totalTrackWidth <= viewportWidth) return 0;
+    return (viewportWidth - slideWidth) / 2;
+  }, [viewportWidth, slideWidth]);
+
+  const centerOffsetRef = useRef(0);
+
+  useEffect(() => {
+    stepPxRef.current = stepPx;
+    centerOffsetRef.current = centerOffset;
+  }, [stepPx, centerOffset]);
+
+  function setTrackTransition(enabled: boolean) {
+    const el = trackRef.current;
+    if (!el) return;
+    if (!enabled || prefersReducedMotionRef.current) {
+      el.style.transition = 'none';
+      return;
+    }
+    el.style.transition = 'transform 500ms cubic-bezier(0.16, 1, 0.3, 1)';
+  }
+
+  function setTrackTransform(loopIndex: number) {
+    const el = trackRef.current;
+    if (!el) return;
+    const px = -(loopIndex * stepPxRef.current) + centerOffsetRef.current;
+    currentTranslateXRef.current = px;
+    el.style.transform = `translate3d(${px}px, 0, 0)`;
+  }
+
+  function setTrackTransformPx(px: number) {
+    const el = trackRef.current;
+    if (!el) return;
+    currentTranslateXRef.current = px;
+    el.style.transform = `translate3d(${px}px, 0, 0)`;
+  }
+
+  useEffect(() => {
+    if (!trackRef.current) return;
+
+    if (images.length === 0) {
+      indexRef.current = 0;
+      setTrackTransition(false);
+      setTrackTransform(0);
+      requestAnimationFrame(() => setTrackTransition(true));
+      return;
+    }
+
+    indexRef.current = isLooping ? buffer : 0;
+    setTrackTransition(false);
+    setTrackTransform(indexRef.current);
+    requestAnimationFrame(() => setTrackTransition(true));
+  }, [images.length, buffer, isLooping, viewportWidth]);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    if (!isLooping) return;
+    const n = images.length;
+    if (n <= 0) return;
+
+    const onEnd = () => {
+      const idx = indexRef.current;
+      const startReal = buffer;
+      const endRealExclusive = buffer + n;
+
+      if (idx >= endRealExclusive) {
+        indexRef.current = idx - n;
+        setTrackTransition(false);
+        setTrackTransform(indexRef.current);
+        requestAnimationFrame(() => requestAnimationFrame(() => setTrackTransition(true)));
+      } else if (idx < startReal) {
+        indexRef.current = idx + n;
+        setTrackTransition(false);
+        setTrackTransform(indexRef.current);
+        requestAnimationFrame(() => requestAnimationFrame(() => setTrackTransition(true)));
+      }
+    };
+
+    el.addEventListener('transitionend', onEnd);
+    return () => el.removeEventListener('transitionend', onEnd);
+  }, [isLooping, images.length, buffer]);
+
+  function onPointerDown(e: ReactPointerEvent) {
+    if (!canNavigate) return;
+    if (!viewportRef.current) return;
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (activePointerIdRef.current !== null) return;
+
+    activePointerIdRef.current = e.pointerId;
+    isDraggingRef.current = true;
+    dragStartXRef.current = e.clientX;
+    dragStartTranslateXRef.current = currentTranslateXRef.current;
+
+    setTrackTransition(false);
+    viewportRef.current.setPointerCapture?.(e.pointerId);
+  }
+
+  function onPointerMove(e: ReactPointerEvent) {
+    if (!isDraggingRef.current) return;
+    if (activePointerIdRef.current !== e.pointerId) return;
+
+    const dx = e.clientX - dragStartXRef.current;
+    setTrackTransformPx(dragStartTranslateXRef.current + dx);
+  }
+
+  function endDrag(e: ReactPointerEvent) {
+    if (!isDraggingRef.current) return;
+    if (activePointerIdRef.current !== e.pointerId) return;
+
+    isDraggingRef.current = false;
+    activePointerIdRef.current = null;
+    viewportRef.current?.releasePointerCapture?.(e.pointerId);
+
+    const step = stepPxRef.current;
+    if (step <= 0) return;
+
+    // Account for center offset when calculating the index
+    const rawIndex = -(currentTranslateXRef.current - centerOffsetRef.current) / step;
+    const nextIndex = Math.round(rawIndex);
+    indexRef.current = nextIndex;
+    setTrackTransition(true);
+    setTrackTransform(indexRef.current);
+  }
+
+  return (
+    <Container
+      size="3"
+      px={{ initial: "4", md: "6" }}
+      style={{ paddingBlock: "clamp(120px, 12vw, 160px)" }}
+    >
+      <Box className="relative" mx={{ initial: "-4", md: "0" }}>
+        <Box
+          ref={viewportRef}
+          className={[
+            'relative overflow-hidden select-none touch-pan-y',
+            canNavigate ? (isDraggingRef.current ? 'cursor-grabbing' : 'cursor-grab') : '',
+          ].join(' ')}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
+        >
+          <div
+            ref={trackRef}
+            className="flex will-change-transform motion-reduce:transition-none"
+            style={{ gap: `${GAP_PX}px`, padding: `${GAP_PX}px` }}
+          >
+            {isLoading && images.length === 0 ? (
+              Array.from({ length: VISIBLE_COUNT }).map((_, i) => (
+                <div key={i} className="shrink-0" style={{ width: slideWidth || 280 }}>
+                  <div className="aspect-[3/4] bg-black/10 dark:bg-white/10" />
+                </div>
+              ))
+            ) : images.length === 0 ? (
+              <Box p="4">
+                <Text size="2" color="gray">
+                  No images found in <code className="font-mono">public/gallery</code>.
+                </Text>
+              </Box>
+            ) : (
+              (loopedImages.length ? loopedImages : images).map((src, i) => (
+                <div key={`${src}::${i}`} className="shrink-0" style={{ width: slideWidth || 280 }}>
+                  <div className="group relative aspect-[3/4] overflow-hidden">
+                    <Image
+                      src={src}
+                      alt={`Gallery image ${getRealIndex(i, buffer, images.length) + 1}`}
+                      fill
+                      sizes="(max-width: 640px) 75vw, (max-width: 1024px) 45vw, 33vw"
+                      className="object-cover grayscale transition duration-300 group-hover:grayscale-0"
+                      draggable={false}
+                    />
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </Box>
+      </Box>
+
+      <Flex mt="2" align="center" justify="between" gap="4">
+        <Button asChild variant="outline" color="gray" size="1">
+          <NextLink href="/gallery">
+            View full gallery <ArrowRight size={16} />
+          </NextLink>
+        </Button>
+
+        <Flex justify="end" gap="2">
+          <IconButton
+            type="button"
+            aria-label="Previous images"
+            disabled={!canNavigate}
+            onClick={() => {
+              if (!canNavigate) return;
+              indexRef.current -= 1;
+              setTrackTransition(true);
+              setTrackTransform(indexRef.current);
+            }}
+            variant="soft"
+          >
+            <ChevronLeft size={18} />
+          </IconButton>
+          <IconButton
+            type="button"
+            aria-label="Next images"
+            disabled={!canNavigate}
+            onClick={() => {
+              if (!canNavigate) return;
+              indexRef.current += 1;
+              setTrackTransition(true);
+              setTrackTransform(indexRef.current);
+            }}
+            variant="soft"
+          >
+            <ChevronRight size={18} />
+          </IconButton>
+        </Flex>
+      </Flex>
+    </Container>
+  );
+}

@@ -1,11 +1,12 @@
 # timsum.net
 
-This is my personal website that you can find [here](timsum.net).
+This is the 3rd version of my personal site. It's evolving over the years. The current stack uses:
 
-> 🚧 This site is w.i.p. 🚧
+- Next.js
+- Radix Themes
+- GSAP
+- Lucide Icons
 
-## Techstack
+The fancy animated noise background was inspired by: https://codepen.io/iceable/pen/yLBrZOd
 
-- 🛠️ React, Typescript and Next.js
-- 🎨 RadixUI Themes
-- 📹 Framer Motion
+As usual this site is a continuous project and I might add more stuff or rework it anytime :)
