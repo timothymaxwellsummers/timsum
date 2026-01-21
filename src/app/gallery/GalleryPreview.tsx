@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import { type PointerEvent as ReactPointerEvent, useEffect, useMemo, useRef, useState } from 'react';
+import { type PointerEvent as ReactPointerEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import NextLink from 'next/link';
-import { Box, Container, Flex, IconButton, Text, Button } from '@radix-ui/themes';
+import { Box, Container, Flex, IconButton, Text, Button, Skeleton } from '@radix-ui/themes';
 
 type GalleryApiResponse = { images: string[] };
 
@@ -34,6 +34,7 @@ export function GalleryPreview() {
 
   const [images, setImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
   const indexRef = useRef(0);
   const stepPxRef = useRef(0);
   const currentTranslateXRef = useRef(0);
@@ -43,6 +44,10 @@ export function GalleryPreview() {
   const dragStartTranslateXRef = useRef(0);
   const activePointerIdRef = useRef<number | null>(null);
   const prefersReducedMotionRef = useRef(false);
+
+  const handleImageLoad = useCallback((src: string) => {
+    setLoadedImages((prev) => new Set(prev).add(src));
+  }, []);
 
   useEffect(() => {
     if (!viewportRef.current) return;
@@ -272,7 +277,9 @@ export function GalleryPreview() {
             {isLoading && images.length === 0 ? (
               Array.from({ length: VISIBLE_COUNT }).map((_, i) => (
                 <div key={i} className="shrink-0" style={{ width: slideWidth || 280 }}>
-                  <div className="aspect-[3/4] bg-black/10 dark:bg-white/10" />
+                  <Box style={{ aspectRatio: '3/4' }}>
+                    <Skeleton width="100%" height="100%" style={{ borderRadius: 0 }} />
+                  </Box>
                 </div>
               ))
             ) : images.length === 0 ? (
@@ -285,6 +292,11 @@ export function GalleryPreview() {
               (loopedImages.length ? loopedImages : images).map((src, i) => (
                 <div key={`${src}::${i}`} className="shrink-0" style={{ width: slideWidth || 280 }}>
                   <div className="group relative aspect-[3/4] overflow-hidden">
+                    {!loadedImages.has(src) && (
+                      <Box position="absolute" inset="0">
+                        <Skeleton width="100%" height="100%" style={{ borderRadius: 0 }} />
+                      </Box>
+                    )}
                     <Image
                       src={src}
                       alt={`Gallery image ${getRealIndex(i, buffer, images.length) + 1}`}
@@ -292,6 +304,7 @@ export function GalleryPreview() {
                       sizes="(max-width: 640px) 75vw, (max-width: 1024px) 45vw, 33vw"
                       className="object-cover grayscale transition duration-300 group-hover:grayscale-0"
                       draggable={false}
+                      onLoad={() => handleImageLoad(src)}
                     />
                   </div>
                 </div>

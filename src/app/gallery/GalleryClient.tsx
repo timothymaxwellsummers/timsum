@@ -12,13 +12,18 @@ import {
 } from "@radix-ui/themes";
 import NextLink from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 type GalleryApiResponse = { images: string[] };
 
 export function GalleryClient() {
   const [images, setImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+
+  const handleImageLoad = useCallback((src: string) => {
+    setLoadedImages((prev) => new Set(prev).add(src));
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -63,7 +68,7 @@ export function GalleryClient() {
           {isLoading ? (
             Array.from({ length: 9 }).map((_, i) => (
               <Box key={i} style={{ aspectRatio: "3/4" }}>
-                <Skeleton width="100%" height="100%" />
+                <Skeleton width="100%" height="100%" style={{ borderRadius: 0 }} />
               </Box>
             ))
           ) : images.length === 0 ? (
@@ -80,12 +85,18 @@ export function GalleryClient() {
                 className="group relative overflow-hidden"
                 style={{ aspectRatio: "3/4" }}
               >
+                {!loadedImages.has(src) && (
+                  <Box position="absolute" inset="0">
+                    <Skeleton width="100%" height="100%" style={{ borderRadius: 0 }} />
+                  </Box>
+                )}
                 <Image
                   src={src}
                   alt={`Gallery image ${i + 1}`}
                   fill
                   sizes="(max-width: 768px) 33vw, 320px"
                   className="object-cover grayscale transition duration-300 group-hover:grayscale-0"
+                  onLoad={() => handleImageLoad(src)}
                 />
               </Box>
             ))
