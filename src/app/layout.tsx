@@ -91,8 +91,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <SpeedInsights />
-      <Analytics />
       <head>
         <link rel="manifest" href="/manifest.webmanifest" />
         <script
@@ -112,6 +110,8 @@ export default function RootLayout({
       </head>
       <body>
         <Providers>{children}</Providers>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
