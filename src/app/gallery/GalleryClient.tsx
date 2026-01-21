@@ -6,46 +6,23 @@ import {
   Heading,
   Text,
   Link,
-  Skeleton,
   Grid,
   Box,
+  Skeleton,
 } from "@radix-ui/themes";
 import NextLink from "next/link";
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
-type GalleryApiResponse = { images: string[] };
+type GalleryClientProps = {
+  images: string[];
+};
 
-export function GalleryClient() {
-  const [images, setImages] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+export function GalleryClient({ images }: GalleryClientProps) {
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
 
   const handleImageLoad = useCallback((src: string) => {
     setLoadedImages((prev) => new Set(prev).add(src));
-  }, []);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function load() {
-      try {
-        const res = await fetch("/api/gallery");
-        const data = (await res.json()) as GalleryApiResponse;
-        if (!cancelled) {
-          setImages(Array.isArray(data.images) ? data.images : []);
-        }
-      } catch {
-        if (!cancelled) setImages([]);
-      } finally {
-        if (!cancelled) setIsLoading(false);
-      }
-    }
-
-    void load();
-    return () => {
-      cancelled = true;
-    };
   }, []);
 
   return (
@@ -65,13 +42,7 @@ export function GalleryClient() {
         </Text>
 
         <Grid columns="3" gap="1" width="100%" mb="6">
-          {isLoading ? (
-            Array.from({ length: 9 }).map((_, i) => (
-              <Box key={i} style={{ aspectRatio: "3/4" }}>
-                <Skeleton width="100%" height="100%" style={{ borderRadius: 0 }} />
-              </Box>
-            ))
-          ) : images.length === 0 ? (
+          {images.length === 0 ? (
             <Box style={{ gridColumn: "1 / -1" }} p="4">
               <Text size="2" color="gray">
                 No images found in{" "}

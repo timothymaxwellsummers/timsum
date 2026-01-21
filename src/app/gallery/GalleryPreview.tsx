@@ -6,8 +6,6 @@ import { type PointerEvent as ReactPointerEvent, useCallback, useEffect, useMemo
 import NextLink from 'next/link';
 import { Box, Container, Flex, IconButton, Text, Button, Skeleton } from '@radix-ui/themes';
 
-type GalleryApiResponse = { images: string[] };
-
 const VISIBLE_COUNT = 3;
 const GAP_PX = 4;
 const LOOP_BUFFER = VISIBLE_COUNT;
@@ -27,14 +25,23 @@ function getRealIndex(loopIndex: number, buffer: number, n: number) {
   return ((real % n) + n) % n;
 }
 
-export function GalleryPreview() {
+type GalleryPreviewProps = {
+  images: string[];
+};
+
+export function GalleryPreview({ images: serverImages }: GalleryPreviewProps) {
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [viewportWidth, setViewportWidth] = useState(0);
 
-  const [images, setImages] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // Start with server order, shuffle only after hydration to avoid mismatch
+  const [images, setImages] = useState(serverImages);
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+
+  // Shuffle after hydration completes (client-only)
+  useEffect(() => {
+    setImages(shuffle(serverImages));
+  }, [serverImages]);
   const indexRef = useRef(0);
   const stepPxRef = useRef(0);
   const currentTranslateXRef = useRef(0);
@@ -63,31 +70,6 @@ export function GalleryPreview() {
 
   useEffect(() => {
     prefersReducedMotionRef.current = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
-  }, []);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function load() {
-      setIsLoading(true);
-      try {
-        const res = await fetch('/api/gallery');
-        const data = (await res.json()) as GalleryApiResponse;
-        if (!cancelled) {
-          const list = Array.isArray(data.images) ? data.images : [];
-          setImages(shuffle(list));
-        }
-      } catch {
-        if (!cancelled) setImages([]);
-      } finally {
-        if (!cancelled) setIsLoading(false);
-      }
-    }
-
-    void load();
-    return () => {
-      cancelled = true;
-    };
   }, []);
 
   const loopedImages = useMemo(() => {
@@ -274,15 +256,7 @@ export function GalleryPreview() {
             className="flex will-change-transform motion-reduce:transition-none"
             style={{ gap: `${GAP_PX}px`, padding: `${GAP_PX}px` }}
           >
-            {isLoading && images.length === 0 ? (
-              Array.from({ length: VISIBLE_COUNT }).map((_, i) => (
-                <div key={i} className="shrink-0" style={{ width: slideWidth || 280 }}>
-                  <Box style={{ aspectRatio: '3/4' }}>
-                    <Skeleton width="100%" height="100%" style={{ borderRadius: 0 }} />
-                  </Box>
-                </div>
-              ))
-            ) : images.length === 0 ? (
+            {images.length === 0 ? (
               <Box p="4">
                 <Text size="2" color="gray">
                   No images found in <code className="font-mono">public/gallery</code>.

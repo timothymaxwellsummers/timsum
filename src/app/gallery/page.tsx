@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GalleryClient } from "./GalleryClient";
+import { getGalleryImages } from "@/lib/gallery";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Gallery() {
-  return <GalleryClient />;
+export default async function Gallery() {
+  const images = await getGalleryImages();
+  return <GalleryClient images={images} />;
 }
