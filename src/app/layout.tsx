@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import Providers from "@/app/providers";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 const siteUrl = "https://timsum.net";
 const siteName = "tim's site";
@@ -89,6 +91,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <SpeedInsights />
+      <Analytics />
       <head>
         <link rel="manifest" href="/manifest.webmanifest" />
         <script
