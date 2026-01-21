@@ -22,9 +22,9 @@ export default function Providers({ children }: ProvidersProps) {
         panelBackground="translucent"
         scaling="110%"
         radius="full"
+        hasBackground={false}
       >
-        <div className="noise-overlay"></div>
-        <div className="content-wrapper">{children}</div>
+        {children}
       </Theme>
     </ThemeProvider>
   );
